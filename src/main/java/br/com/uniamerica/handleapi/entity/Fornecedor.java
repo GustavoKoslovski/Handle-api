@@ -1,8 +1,5 @@
 package br.com.uniamerica.handleapi.entity;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.envers.AuditTable;
 import org.hibernate.envers.Audited;
 
@@ -13,7 +10,6 @@ import javax.persistence.Table;
 
 @Entity
 @NoArgsConstructor
-@ToString
 @Table(name = "fornecedores", schema = "public")
 public class Fornecedor extends AbstractEntity {
 
@@ -29,4 +25,12 @@ public class Fornecedor extends AbstractEntity {
     @Column(name = "endereco", nullable = false, length = 100)
     private String endereco;
 
+    @Override
+    public String toString() {
+        return "Fornecedor{" +
+                "nome='" + nome + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", endereco='" + endereco + '\'' +
+                '}';
+    }
 }
