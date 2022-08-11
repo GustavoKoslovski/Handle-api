@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FornecedorTest {
 
+    //teste ricardo
     @Test
     public void FornecedorNomeTest() {
         Fornecedor fornecedor = new Fornecedor();
