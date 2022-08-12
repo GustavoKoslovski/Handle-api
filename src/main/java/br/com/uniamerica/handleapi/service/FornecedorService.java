@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 
 @Service
 public class FornecedorService {
@@ -44,5 +45,22 @@ public class FornecedorService {
             throw new RuntimeException();
         }
     }
+
+    public Boolean isTelefoneMenor(Fornecedor fornecedor) {
+        if (fornecedor.getTelefone().length() == 11) {
+           return true;
+        } else {
+            throw new RuntimeException("Telefone é inválido");
+        }
+    }
+
+    public Boolean isNomeNotNull(Fornecedor fornecedor){
+        if (fornecedor.getNome() == null || fornecedor.getNome().isEmpty()){
+            throw new RuntimeException("O nome não foi fornecido, favor insira um nome válido.");
+        }else {
+            return true;
+        }
+    }
+
 
 }
