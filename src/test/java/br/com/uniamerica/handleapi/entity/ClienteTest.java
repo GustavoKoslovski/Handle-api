@@ -81,4 +81,15 @@ public class ClienteTest {
         cliente.setTelefone("222");
         assertTrue(clienteService.isTelefoneMenor(cliente));
     }
+
+    //Testa se Telefone tem Caracter especial
+    @Test
+    public void isTelefoneCaracter() {
+        Cliente cliente = new Cliente();
+        ClienteService clienteService = new ClienteService();
+
+        cliente.setTelefone("255");
+        assertTrue(clienteService.isTelefoneCaracter(cliente));
+        }
+    }
 }

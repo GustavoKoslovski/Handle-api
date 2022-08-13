@@ -126,4 +126,18 @@ public class ClienteService {
         }
     }
 
+    //Valida Caracter Especial do Telefone
+    public Boolean isTelefoneCaracter(Cliente cliente) {
+        char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
+        for (int i = 0; i < cliente.getTelefone().length(); i++) {
+            char chr = cliente.getTelefone().charAt(i);
+            for (int j = 0; j < charSearch.length; j++) {
+                if (charSearch[j] == chr) {
+                    throw new RuntimeException("O CPF fornecido nao e valido, favor insira um CPF sem caracter especial");
+                }
+            }
+        }
+        return true;
+    }
+
 }
