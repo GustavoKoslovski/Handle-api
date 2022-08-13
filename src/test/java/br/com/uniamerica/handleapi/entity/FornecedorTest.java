@@ -1,5 +1,4 @@
 package br.com.uniamerica.handleapi.entity;
-
 import br.com.uniamerica.handleapi.service.FornecedorService;
 import org.junit.jupiter.api.Test;
 
@@ -71,7 +70,7 @@ public class FornecedorTest {
    }
 
     @Test
-    public void isTelefonNotNull(){
+    public void isTelefoneNotNull(){
         Fornecedor fornecedor = new Fornecedor();
         FornecedorService fornecedorService = new FornecedorService();
 

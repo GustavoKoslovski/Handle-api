@@ -1,4 +1,5 @@
 package br.com.uniamerica.handleapi.service;
+import br.com.uniamerica.handleapi.entity.Fornecedor;
 import br.com.uniamerica.handleapi.entity.Funcionario;
 import br.com.uniamerica.handleapi.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +45,110 @@ public class FuncionarioService {
         }
     }
 
+    //******* Validação de nome do Funcionario *******//
+
+    // Valida se o nome é nulo ou vazio. //
+    public Boolean isNomeNotNull(Funcionario funcionario) {
+        if (funcionario.getNome() == null || funcionario.getNome().isEmpty()) {
+            throw new RuntimeException("O nome não foi fornecido, favor insira um nome valido.");
+        } else {
+            return true;
+        }
+    }
+
+    // Valida se o nome tem caracter especial. //
+    public Boolean isNomeCaracter(Funcionario funcionario) {
+        char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
+        for (int i = 0; i < funcionario.getNome().length(); i++) {
+            char chr = funcionario.getNome().charAt(i);
+            for (int j = 0; j < charSearch.length; j++) {
+                if (charSearch[j] == chr) {
+                    throw new RuntimeException("O nome fornecido nao e valido, favor insira um nome sem caracter especial");
+                }
+            }
+        }
+        return true;
+    }
+    //****//
+
+    //******* Validação de telefone do Funcionario *******//
+
+    public Boolean isTelefoneNotNull(Funcionario funcionario) {
+        if (funcionario.getTelefone() != null || funcionario.getTelefone().isEmpty()) {
+            throw new RuntimeException("Telefone é invalido");
+        } else {
+            return true;
+        }
+    }
+
+    // Valida se o telefone tem o tamanho correto de numeros. //
+    public Boolean isTelefoneMenor(Funcionario funcionario) {
+        if (funcionario.getTelefone().length() == 11) {
+            return true;
+        } else {
+            throw new RuntimeException("Telefone é invalido");
+        }
+    }
+
+    // Valida se o telefone possui caracter especial. //
+    public Boolean isTelefoneCaracter(Funcionario funcionario) {
+        char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
+        for (int i = 0; i < funcionario.getTelefone().length(); i++) {
+            char chr = funcionario.getTelefone().charAt(i);
+            for (int j = 0; j < charSearch.length; j++) {
+                if (charSearch[j] == chr) {
+                    throw new RuntimeException("O telefone fornecido nao e valido, favor insira um telefone sem caracter especial.");
+                }
+            }
+        }
+        return true;
+    }
+
+    // Valida se o telefone informado possui letras. //
+    public Boolean isTelefoneNumber(Funcionario funcionario){
+        char[] charSearch = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        for (int i = 0; i < funcionario.getTelefone().length(); i++) {
+            char chr = funcionario.getTelefone().charAt(i);
+            for (int j = 0; j < charSearch.length; j++) {
+                if (charSearch[j] == chr) {
+                    return true;
+                }
+            }
+        }
+        throw new RuntimeException("O telefone contem letras.");
+    }
+    //****//
+
+    //******* Validação de salario do Funcionario *******//
+
+    public Boolean isSalarioNotNull(Funcionario funcionario) {
+        if (funcionario.getTelefone() != null || funcionario.getTelefone().isEmpty()) {
+            throw new RuntimeException("Salario e invalido");
+        } else {
+            return true;
+        }
+    }
+
+    // Valida se o salário possui caracter especial. //
+    public Boolean isSalarioCaracter(Funcionario funcionario) {
+        char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
+        for (int i = 0; i < funcionario.getTelefone().length(); i++) {
+            char chr = funcionario.getTelefone().charAt(i);
+            for (int j = 0; j < charSearch.length; j++) {
+                if (charSearch[j] == chr) {
+                    throw new RuntimeException("O salario fornecido nao e valido, favor insira um salario sem caracter especial.");
+                }
+            }
+        }
+        return true;
+    }
+
+    // Valida se o salário informado é negativo. //
+    public Boolean isSalarioNegativo(Funcionario funcionario){
+        if(funcionario.getSalario() > 0){
+            return true;
+        }else {
+            throw new RuntimeException("O salario nao pode ser negativo.");
+        }
+    }
 }

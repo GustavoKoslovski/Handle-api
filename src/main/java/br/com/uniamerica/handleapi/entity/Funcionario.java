@@ -44,6 +44,6 @@ public class Funcionario extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "salario", nullable = false, precision = 10, scale = 2)
-    private BigDecimal salario;
+    private Double salario;
 
 }

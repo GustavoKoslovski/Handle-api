@@ -15,6 +15,7 @@ public class CategoriaTest {
         assertTrue(categoriaService.isNomeNotNull(categoria));
     }
 
+
     @Test
     public void isNomeCaracter() {
         Categoria categoria = new Categoria();

@@ -48,6 +48,7 @@ public class FornecedorService {
 
     //** Validação de nome do Fornecedor **//
 
+    // Valida se o nome é nulo ou vazio. //
     public Boolean isNomeNotNull(Fornecedor fornecedor) {
         if (fornecedor.getNome() == null || fornecedor.getNome().isEmpty()) {
             throw new RuntimeException("O nome não foi fornecido, favor insira um nome valido.");
@@ -56,6 +57,7 @@ public class FornecedorService {
         }
     }
 
+    // Valida se o nome contem caracter especiais. //
     public Boolean isNomeCaracter(Fornecedor fornecedor) {
         char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
         for (int i = 0; i < fornecedor.getNome().length(); i++) {
@@ -72,6 +74,7 @@ public class FornecedorService {
 
     //** Validação de telefone do Fornecedor **//
 
+    // Valida se o telefone é nulo ou vazio. //
     public Boolean isTelefoneNotNull(Fornecedor fornecedor) {
         if (fornecedor.getTelefone() != null || fornecedor.getTelefone().isEmpty()) {
             throw new RuntimeException("Telefone é invalido");
@@ -80,6 +83,7 @@ public class FornecedorService {
         }
     }
 
+    // Valida se o telefone informado tem o tamanho correto. //
     public Boolean isTelefoneMenor(Fornecedor fornecedor) {
         if (fornecedor.getTelefone().length() == 11) {
             return true;
@@ -88,6 +92,7 @@ public class FornecedorService {
         }
     }
 
+    // Valida se o telefone tem caracter especiais. //
     public Boolean isTelefoneCaracter(Fornecedor fornecedor) {
         char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
         for (int i = 0; i < fornecedor.getTelefone().length(); i++) {
@@ -101,6 +106,7 @@ public class FornecedorService {
         return true;
     }
 
+    // Valida se tem letras no telefone informado. //
     public Boolean isTelefoneNumber(Fornecedor fornecedor){
             char[] charSearch = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
             for (int i = 0; i < fornecedor.getTelefone().length(); i++) {
@@ -117,6 +123,7 @@ public class FornecedorService {
 
     //** Validação de endereço do Fornecedor **//
 
+    // Valida se o endereço informado é negativo. //
     public Boolean isEnderecoNotNull(Fornecedor fornecedor) {
         if (fornecedor.getEndereco() == null || fornecedor.getEndereco().isEmpty()) {
             throw new RuntimeException("O endereco não foi fornecido, favor insira um nome valido.");
