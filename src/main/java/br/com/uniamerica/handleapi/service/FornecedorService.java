@@ -68,7 +68,6 @@ public class FornecedorService {
         }
         return true;
     }
-
     //****//
 
     //** Validação de telefone do Fornecedor **//
