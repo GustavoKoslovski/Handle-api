@@ -92,4 +92,3 @@ public class ClienteTest {
         assertTrue(clienteService.isTelefoneCaracter(cliente));
         }
     }
-}
