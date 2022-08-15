@@ -1,12 +1,20 @@
 package br.com.uniamerica.handleapi.service;
+import br.com.uniamerica.handleapi.entity.Cliente;
 import br.com.uniamerica.handleapi.entity.Fornecedor;
 import br.com.uniamerica.handleapi.entity.Funcionario;
 import br.com.uniamerica.handleapi.repository.FuncionarioRepository;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Year;
+import java.util.Calendar;
+import java.util.Date;
+
 @Service
 public class FuncionarioService {
 
@@ -151,4 +159,51 @@ public class FuncionarioService {
             throw new RuntimeException("O salario nao pode ser negativo.");
         }
     }
+
+    //** Validacao de CPF do Funcionario **//
+
+    //Valida CPF not null e nao e empty
+    public Boolean isCpfNotNull(Funcionario funcionario) {
+        if (funcionario.getCpf() == null || funcionario.getCpf().isEmpty()) {
+            throw new RuntimeException("O CPF não foi fornecido, favor insira um CPF valido.");
+        } else {
+            return true;
+        }
+    }
+
+    //Valida se CPF tem menos de 11 caracter
+    public Boolean isCpfMenor(Funcionario funcionario) {
+        if (funcionario.getCpf().length() == 11) {
+            return true;
+        } else {
+            throw new RuntimeException("Cliente é invalido");
+        }
+    }
+
+    //Valida Caracter Especial do CPF
+    public Boolean isCpfCaracter(Funcionario funcionario) {
+        char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
+        for (int i = 0; i < funcionario.getCpf().length(); i++) {
+            char chr = funcionario.getCpf().charAt(i);
+            for (int j = 0; j < charSearch.length; j++) {
+                if (charSearch[j] == chr) {
+                    throw new RuntimeException("O CPF fornecido nao e valido, favor insira um CPF sem caracter especial");
+                }
+            }
+        }
+        return true;
+    }
+
+    //** Validaçao da Data_Admissao **//
+
+    //Valida se a data informada é mais do que 2 anos no futuro.
+    public Boolean isDataMaior(Funcionario funcionario){
+        LocalDate datafutura = LocalDate.now().plusYears(2);
+
+        if(funcionario.getDataAdmissao().isBefore(datafutura)){
+            return true;
+        }else {throw new RuntimeException("A data informada é maior que o permitido");}
+    }
+
+
 }

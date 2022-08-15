@@ -3,14 +3,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.AuditTable;
-import org.hibernate.envers.Audited;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -36,7 +36,7 @@ public class Funcionario extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "data_admissao" )
-    private String dataAdmissao;
+    private LocalDate dataAdmissao;
 
     @Getter @Setter
     @Column(name = "telefone", nullable = false, length = 15)

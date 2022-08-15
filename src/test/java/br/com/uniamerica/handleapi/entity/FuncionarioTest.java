@@ -1,7 +1,12 @@
 package br.com.uniamerica.handleapi.entity;
+import br.com.uniamerica.handleapi.service.ClienteService;
 import br.com.uniamerica.handleapi.service.FornecedorService;
 import br.com.uniamerica.handleapi.service.FuncionarioService;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -94,8 +99,49 @@ public class FuncionarioTest {
         assertTrue(funcionarioService.isSalarioNegativo(funcionario));
     }
 
+    //** Teste de CPF do Funcionario **//
+
+    //Testa se CPF nao e null
+    @Test
+    public void isCpfNotNull() {
+        Funcionario funcionario = new Funcionario();
+        FuncionarioService funcionarioService = new FuncionarioService();
+
+        funcionario.setCpf("as");
+        assertTrue(funcionarioService.isCpfNotNull(funcionario));
+    }
+
     //****//
 
+    //Testa se CPF tem 11 caracter especial
+    @Test
+    public void isCpfMenor() {
+        Funcionario funcionario = new Funcionario();
+        FuncionarioService funcionarioService = new FuncionarioService();
 
+        funcionario.setCpf("12349567892");
+        assertTrue(funcionarioService.isCpfMenor(funcionario));
+    }
+
+    //Testa se CPF tem caracter especial
+    @Test
+    public void isCpfCaracter() {
+        Funcionario funcionario = new Funcionario();
+        FuncionarioService funcionarioService = new FuncionarioService();
+
+        funcionario.setCpf("222222222222!");
+        assertTrue(funcionarioService.isCpfCaracter(funcionario));
+    }
+
+    //** Teste de dataDeAdmissao **//
+
+    @Test
+    public void isDataMaior() {
+        Funcionario funcionario = new Funcionario();
+        FuncionarioService funcionarioService = new FuncionarioService();
+
+        funcionario.setDataAdmissao(LocalDate.now().plusMonths(25));
+        assertTrue(funcionarioService.isDataMaior(funcionario));
+    }
 
 }

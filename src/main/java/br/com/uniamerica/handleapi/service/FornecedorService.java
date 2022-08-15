@@ -123,7 +123,7 @@ public class FornecedorService {
 
     //** Validação de endereço do Fornecedor **//
 
-    // Valida se o endereço informado é negativo. //
+    // Valida se o endereço informado é nulo ou vazio. //
     public Boolean isEnderecoNotNull(Fornecedor fornecedor) {
         if (fornecedor.getEndereco() == null || fornecedor.getEndereco().isEmpty()) {
             throw new RuntimeException("O endereco não foi fornecido, favor insira um nome valido.");
