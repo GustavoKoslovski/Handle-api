@@ -1,19 +1,14 @@
 package br.com.uniamerica.handleapi.service;
-import br.com.uniamerica.handleapi.entity.Cliente;
-import br.com.uniamerica.handleapi.entity.Fornecedor;
+
 import br.com.uniamerica.handleapi.entity.Funcionario;
 import br.com.uniamerica.handleapi.repository.FuncionarioRepository;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Year;
-import java.util.Calendar;
-import java.util.Date;
 
 @Service
 public class FuncionarioService {
@@ -198,7 +193,7 @@ public class FuncionarioService {
 
     //Valida se a data informada é mais do que 2 anos no futuro.
     public Boolean isDataMaior(Funcionario funcionario){
-        LocalDate datafutura = LocalDate.now().plusYears(2);
+        LocalDate datafutura = LocalDate.now().plusDays(5);
 
         if(funcionario.getDataAdmissao().isBefore(datafutura)){
             return true;
