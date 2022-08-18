@@ -108,7 +108,7 @@ public class FuncionarioService {
     }
 
     // Valida se o telefone informado possui letras. //
-    public Boolean isTelefoneNumber(Funcionario funcionario){
+ public Boolean isTelefoneNumber(Funcionario funcionario){
         char[] charSearch = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         for (int i = 0; i < funcionario.getTelefone().length(); i++) {
             char chr = funcionario.getTelefone().charAt(i);
@@ -120,7 +120,15 @@ public class FuncionarioService {
         }
         throw new RuntimeException("O telefone contem letras.");
     }
-    //****//
+
+
+  /*  @Pattern
+    @Column
+    public Boolean isTelefoneNumber(Funcionario funcionario) {
+        (regexp = "([0-9]{11})") ///  permite 11 digitos de 1 a 9
+        (name = "telefone", nullable = false, length = 18)
+    }
+    //****/
 
     //******* Validação de salario do Funcionario *******//
 

@@ -1,5 +1,5 @@
 package br.com.uniamerica.handleapi.entity;
-import br.com.uniamerica.handleapi.service.ClienteService;
+
 import br.com.uniamerica.handleapi.service.ProdutoService;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +25,15 @@ public class ProdutoTest {
         assertTrue(produtoService.isNomeCaracter(produto));
     }
 
+    @Test
+    public void isCategoriaNotNull(){
+        Produto produto = new Produto();
+        Categoria categoria = new Categoria();
+        ProdutoService produtoService = new ProdutoService();
+
+        produto.setCategoria(categoria);
+        assertTrue(produtoService.isCategoriaNotNull(produto));
+    }
 }
 
 

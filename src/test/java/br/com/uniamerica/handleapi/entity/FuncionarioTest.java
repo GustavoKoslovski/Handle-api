@@ -1,12 +1,9 @@
 package br.com.uniamerica.handleapi.entity;
-import br.com.uniamerica.handleapi.service.ClienteService;
-import br.com.uniamerica.handleapi.service.FornecedorService;
+
 import br.com.uniamerica.handleapi.service.FuncionarioService;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -65,7 +62,7 @@ public class FuncionarioTest {
         Funcionario funcionario = new Funcionario();
         FuncionarioService funcionarioService = new FuncionarioService();
 
-        funcionario.setTelefone("dsaf");
+        funcionario.setTelefone("2222222");
         assertTrue(funcionarioService.isTelefoneNumber(funcionario));
     }
     //****//
