@@ -1,12 +1,9 @@
 package br.com.uniamerica.handleapi.entity;
-import br.com.uniamerica.handleapi.service.ClienteService;
-import br.com.uniamerica.handleapi.service.FornecedorService;
+
 import br.com.uniamerica.handleapi.service.FuncionarioService;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -65,7 +62,7 @@ public class FuncionarioTest {
         Funcionario funcionario = new Funcionario();
         FuncionarioService funcionarioService = new FuncionarioService();
 
-        funcionario.setTelefone("dsaf");
+        funcionario.setTelefone("222");
         assertTrue(funcionarioService.isTelefoneNumber(funcionario));
     }
     //****//
@@ -134,7 +131,16 @@ public class FuncionarioTest {
     }
 
     //** Teste de dataDeAdmissao **//
+/*
+    @Test
+    public void isDataAdmissaoNotNull() {
+        Funcionario funcionario = new Funcionario();
+        FuncionarioService funcionarioService = new FuncionarioService();
 
+        funcionario.setDataAdmissao("");
+        assertTrue(funcionarioService.isDataAdmissaoNotNull(funcionario));
+    }
+*/
     @Test
     public void isDataMaior() {
         Funcionario funcionario = new Funcionario();
@@ -143,5 +149,16 @@ public class FuncionarioTest {
         funcionario.setDataAdmissao(LocalDate.now().plusDays(5));
         assertTrue(funcionarioService.isDataMaior(funcionario));
     }
+
+
+    @Test
+    public void finalDeSemana() {
+        Funcionario funcionario = new Funcionario();
+        FuncionarioService funcionarioService = new FuncionarioService();
+
+        funcionario.setDataAdmissao(LocalDate.now().plusDays(4));
+        assertTrue(funcionarioService.finalDeSemana(funcionario));
+    }
+
 
 }

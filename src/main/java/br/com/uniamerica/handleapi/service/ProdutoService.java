@@ -1,11 +1,12 @@
 package br.com.uniamerica.handleapi.service;
-import br.com.uniamerica.handleapi.entity.Cliente;
+
 import br.com.uniamerica.handleapi.entity.Produto;
 import br.com.uniamerica.handleapi.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 
 @Service
@@ -67,6 +68,17 @@ public class ProdutoService {
             }
         }
         return true;
+    }
+
+    //CATEGORIA
+
+    //Validacao NotNull Categoria
+    public Boolean isCategoriaNotNull(Produto produto) {
+        if (produto.getCategoria() == null) {
+            throw new RuntimeException("A categoria nao foi fornecida.");
+        } else {
+            return true;
+        }
     }
 
 }
