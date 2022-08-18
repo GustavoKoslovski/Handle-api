@@ -62,7 +62,7 @@ public class FuncionarioTest {
         Funcionario funcionario = new Funcionario();
         FuncionarioService funcionarioService = new FuncionarioService();
 
-        funcionario.setTelefone("2222222");
+        funcionario.setTelefone("222");
         assertTrue(funcionarioService.isTelefoneNumber(funcionario));
     }
     //****//
@@ -131,7 +131,16 @@ public class FuncionarioTest {
     }
 
     //** Teste de dataDeAdmissao **//
+/*
+    @Test
+    public void isDataAdmissaoNotNull() {
+        Funcionario funcionario = new Funcionario();
+        FuncionarioService funcionarioService = new FuncionarioService();
 
+        funcionario.setDataAdmissao("");
+        assertTrue(funcionarioService.isDataAdmissaoNotNull(funcionario));
+    }
+*/
     @Test
     public void isDataMaior() {
         Funcionario funcionario = new Funcionario();
