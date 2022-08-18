@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 @Service
@@ -200,5 +201,5 @@ public class FuncionarioService {
         }else {throw new RuntimeException("A data informada é maior que o permitido");}
     }
 
-
 }
+
