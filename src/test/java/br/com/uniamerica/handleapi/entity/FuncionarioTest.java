@@ -146,8 +146,23 @@ public class FuncionarioTest {
         Funcionario funcionario = new Funcionario();
         FuncionarioService funcionarioService = new FuncionarioService();
 
-        funcionario.setDataAdmissao(LocalDate.now().plusMonths(25));
+        funcionario.setDataAdmissao(LocalDate.now().plusDays(5));
         assertTrue(funcionarioService.isDataMaior(funcionario));
     }
+<<<<<<< HEAD
 */
+=======
+
+
+    @Test
+    public void finalDeSemana() {
+        Funcionario funcionario = new Funcionario();
+        FuncionarioService funcionarioService = new FuncionarioService();
+
+        funcionario.setDataAdmissao(LocalDate.now().plusDays(4));
+        assertTrue(funcionarioService.finalDeSemana(funcionario));
+    }
+
+
+>>>>>>> 1a28f46fe1deb506f2c3ede2858ee7b126fa02ff
 }

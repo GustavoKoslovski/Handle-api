@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 @Service
 public class FuncionarioService {
@@ -191,10 +192,7 @@ public class FuncionarioService {
         return true;
     }
 
-    //** Validaçao da Data_Admissao **//
 
-    //Valida se e null ou empty
-/*
     public Boolean isDataAdmissaoNotNull(Funcionario funcionario) {
         if(funcionario.getDataAdmissao() == null){
             return true;
@@ -211,7 +209,19 @@ public class FuncionarioService {
         }else
             {throw new RuntimeException("A data informada é maior que o permitido");}
     }
-*/
-    //**VALIDA RG
+
+    //Valida se a data informada é final de semana//
+    public boolean finalDeSemana(Funcionario funcionario){
+        if(funcionario.getDataAdmissao().getDayOfWeek() != DayOfWeek.SATURDAY
+                &&
+                funcionario.getDataAdmissao().getDayOfWeek() != DayOfWeek.SUNDAY)
+        {
+            return true;
+        }
+        else{throw new RuntimeException("A data informada é maior que o permitido");}
+    }
+
+
 
 }
+
