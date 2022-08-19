@@ -218,10 +218,8 @@ public class FuncionarioService {
         {
             return true;
         }
-        else{throw new RuntimeException("A data informada é maior que o permitido");}
+        else{throw new RuntimeException("A data informada é final de semana.");}
     }
-
-
 
 }
 
