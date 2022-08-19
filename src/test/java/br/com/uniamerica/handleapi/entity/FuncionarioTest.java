@@ -131,17 +131,17 @@ public class FuncionarioTest {
     }
 
     //** Teste de dataDeAdmissao **//
-/*
-    @Test
+
+   /* @Test
     public void isDataAdmissaoNotNull() {
         Funcionario funcionario = new Funcionario();
         FuncionarioService funcionarioService = new FuncionarioService();
 
         funcionario.setDataAdmissao("");
         assertTrue(funcionarioService.isDataAdmissaoNotNull(funcionario));
-    }
-*/
-   /* @Test
+    }*/
+
+    @Test
     public void isDataMaior() {
         Funcionario funcionario = new Funcionario();
         FuncionarioService funcionarioService = new FuncionarioService();
@@ -149,9 +149,6 @@ public class FuncionarioTest {
         funcionario.setDataAdmissao(LocalDate.now().plusDays(5));
         assertTrue(funcionarioService.isDataMaior(funcionario));
     }
-<<<<<<< HEAD
-*/
-=======
 
 
     @Test
@@ -164,5 +161,4 @@ public class FuncionarioTest {
     }
 
 
->>>>>>> 1a28f46fe1deb506f2c3ede2858ee7b126fa02ff
 }

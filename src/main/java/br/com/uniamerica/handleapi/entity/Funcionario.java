@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,6 +27,7 @@ public class Funcionario extends AbstractEntity {
     private String rg;
 
     @Getter @Setter
+    @CPF
     @Column(name = "cpf", unique = true, nullable = false, length = 15)
     private String cpf;
 
