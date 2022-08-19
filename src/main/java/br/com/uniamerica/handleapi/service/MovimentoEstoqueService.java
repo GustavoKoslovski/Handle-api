@@ -21,4 +21,15 @@ public class MovimentoEstoqueService {
         return this.movimentoEstoqueRepository.findAll(pageable);
     }
 
+    // TESTES MOVIMENTO ESTOQUE //
+
+    //VALIDA SE ENTRADA DO ESTOQUE NAO E NULL
+    public Boolean isMvEstoqueNotNull(MovimentoEstoque movimentoEstoque) {
+        if (movimentoEstoque.getEntrada() == null) {
+            throw new RuntimeException("Favor insira uma entrada.");
+        } else {
+            return true;
+        }
+    }
+
 }
