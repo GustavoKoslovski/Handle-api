@@ -25,4 +25,6 @@ public class CategoriaTest {
         assertTrue(categoriaService.isNomeCaracter(categoria));
     }
     //****//
+
+
 }
