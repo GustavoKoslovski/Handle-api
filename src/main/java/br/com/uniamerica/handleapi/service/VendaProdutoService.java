@@ -1,5 +1,7 @@
 package br.com.uniamerica.handleapi.service;
 
+import br.com.uniamerica.handleapi.entity.Produto;
+import br.com.uniamerica.handleapi.entity.Venda;
 import br.com.uniamerica.handleapi.entity.VendaProduto;
 import br.com.uniamerica.handleapi.repository.VendaProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,18 @@ public class VendaProdutoService {
             throw new RuntimeException();
         }
     }
+
+    //VENDA
+
+    //Validacao NotNull Venda
+    public Boolean isVendaNotNull(VendaProduto vendaProduto) {
+        if (vendaProduto.getVenda() == null) {
+            throw new RuntimeException("A categoria nao foi fornecida.");
+        } else {
+            return true;
+        }
+    }
+
 
 }
 

@@ -86,7 +86,7 @@ public class FuncionarioService {
 
    // Valida se o telefone tem o tamanho correto de numeros. //
     public Boolean isTelefoneMenor(Funcionario funcionario) {
-        if (funcionario.getTelefone().length() == 11) {
+        if (funcionario.getTelefone().length() != 11) {
             return true;
         } else {
             throw new RuntimeException("Telefone é invalido");
