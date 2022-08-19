@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 @Service
@@ -84,7 +84,7 @@ public class FuncionarioService {
         }
     }
 
-    // Valida se o telefone tem o tamanho correto de numeros. //
+   // Valida se o telefone tem o tamanho correto de numeros. //
     public Boolean isTelefoneMenor(Funcionario funcionario) {
         if (funcionario.getTelefone().length() == 11) {
             return true;
@@ -93,7 +93,7 @@ public class FuncionarioService {
         }
     }
 
-    // Valida se o telefone possui caracter especial. //
+  // Valida se o telefone possui caracter especial. //
     public Boolean isTelefoneCaracter(Funcionario funcionario) {
         char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
         for (int i = 0; i < funcionario.getTelefone().length(); i++) {
@@ -107,7 +107,7 @@ public class FuncionarioService {
         return true;
     }
 
-    // Valida se o telefone informado possui letras. //
+   // Valida se o telefone informado possui letras. //
  public Boolean isTelefoneNumber(Funcionario funcionario){
         char[] charSearch = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         for (int i = 0; i < funcionario.getTelefone().length(); i++) {
@@ -122,12 +122,7 @@ public class FuncionarioService {
     }
 
 
-  /*  @Pattern
-    @Column
-    public Boolean isTelefoneNumber(Funcionario funcionario) {
-        (regexp = "([0-9]{11})") ///  permite 11 digitos de 1 a 9
-        (name = "telefone", nullable = false, length = 18)
-    }
+
     //****/
 
     //******* Validação de salario do Funcionario *******//
@@ -197,7 +192,13 @@ public class FuncionarioService {
         return true;
     }
 
-    //** Validaçao da Data_Admissao **//
+
+    public Boolean isDataAdmissaoNotNull(Funcionario funcionario) {
+        if(funcionario.getDataAdmissao() == null){
+            return true;
+        }else
+            {throw new RuntimeException("Insira uma data");}
+    }
 
     //Valida se a data informada é mais do que 2 anos no futuro.
     public Boolean isDataMaior(Funcionario funcionario){
@@ -205,8 +206,22 @@ public class FuncionarioService {
 
         if(funcionario.getDataAdmissao().isBefore(datafutura)){
             return true;
-        }else {throw new RuntimeException("A data informada é maior que o permitido");}
+        }else
+            {throw new RuntimeException("A data informada é maior que o permitido");}
+    }
+
+    //Valida se a data informada é final de semana//
+    public boolean finalDeSemana(Funcionario funcionario){
+        if(funcionario.getDataAdmissao().getDayOfWeek() != DayOfWeek.SATURDAY
+                &&
+                funcionario.getDataAdmissao().getDayOfWeek() != DayOfWeek.SUNDAY)
+        {
+            return true;
+        }
+        else{throw new RuntimeException("A data informada é maior que o permitido");}
     }
 
 
+
 }
+

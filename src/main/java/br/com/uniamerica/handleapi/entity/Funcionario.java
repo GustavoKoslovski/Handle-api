@@ -1,4 +1,5 @@
 package br.com.uniamerica.handleapi.entity;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,10 +8,8 @@ import lombok.ToString;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -39,6 +38,7 @@ public class Funcionario extends AbstractEntity {
     private LocalDate dataAdmissao;
 
     @Getter @Setter
+    @Pattern(regexp = "([0-9]{11})")
     @Column(name = "telefone", nullable = false, length = 15)
     private String telefone;
 
