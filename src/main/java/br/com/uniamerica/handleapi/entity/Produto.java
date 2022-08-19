@@ -33,7 +33,7 @@ public class Produto extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "codigo_de_barras", nullable = false, unique = true, length = 13)
-    private Long codigoDeBarras;
+    private String codigoDeBarras;
 
     @Getter @Setter
     @Column(name = "valor_custo", nullable = false, precision = 10, scale = 2)

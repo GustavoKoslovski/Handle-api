@@ -1,5 +1,6 @@
 package br.com.uniamerica.handleapi.service;
 
+import br.com.uniamerica.handleapi.entity.Funcionario;
 import br.com.uniamerica.handleapi.entity.Produto;
 import br.com.uniamerica.handleapi.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,4 +82,58 @@ public class ProdutoService {
         }
     }
 
+    //CÓD. DE BARRA
+    //Validação NotNull Código
+    public Boolean isCodigoBarraNotNull(Produto produto){
+        if(produto.getCodigoDeBarras() != null){
+            return true;
+        } else {
+            throw new RuntimeException("O Codigo de barra não foi fornecida.");
+        }
+    }
+
+    //Validação 13 carácter
+    public Boolean isCodigoBarraMenor(Produto produto) {
+        if (produto.getCodigoDeBarras().length() != 13) {
+            return true;
+        } else {
+            throw new RuntimeException("Código de Barras é invalido");
+        }
+    }
+
+    //Caracter especial
+    public Boolean isCodigoBarrasCaracter(Produto produto){
+        char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
+        for (int i = 0; i < produto.getCodigoDeBarras().length(); i++){
+            char chr = produto.getCodigoDeBarras().charAt(i);
+            for (int j = 0; j < charSearch.length; j++){
+                if (charSearch[j] == chr){
+                    throw new RuntimeException("O numero de categoria fornecido nao é valido, favor insira um codigo de barras sem caracter especial");
+                }
+            }
+        }
+        return true;
+    }
+
+    //Verificar se o Fornecedor é nulo
+    public Boolean isFornecedorNotNull(Produto produto){
+        if(produto.getFornecedor() != null){
+            return true;
+        } else {
+            throw new RuntimeException("O Fornecedor não foi fornecida.");
+        }
+    }
+
+    public Boolean isFornecedorCaracter(Produto produto){
+        char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
+        for (int i = 0; i < produto.getFornecedor().getId().toString().length(); i++){
+            char chr = produto.getFornecedor().getId().toString().charAt(i);
+            for (int j = 0; j < charSearch.length; j++){
+                if (charSearch[j] == chr){
+                    throw new RuntimeException("Favor insira um fornecedor sem caracter especial");
+                }
+            }
+        }
+        return true;
+    }
 }

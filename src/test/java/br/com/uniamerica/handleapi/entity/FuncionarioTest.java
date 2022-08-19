@@ -141,7 +141,7 @@ public class FuncionarioTest {
         assertTrue(funcionarioService.isDataAdmissaoNotNull(funcionario));
     }
 */
-    @Test
+   /* @Test
     public void isDataMaior() {
         Funcionario funcionario = new Funcionario();
         FuncionarioService funcionarioService = new FuncionarioService();
@@ -149,5 +149,5 @@ public class FuncionarioTest {
         funcionario.setDataAdmissao(LocalDate.now().plusMonths(25));
         assertTrue(funcionarioService.isDataMaior(funcionario));
     }
-
+*/
 }
