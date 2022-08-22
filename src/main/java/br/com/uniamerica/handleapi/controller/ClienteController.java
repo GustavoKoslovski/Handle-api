@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @CrossOrigin
 @RequestMapping("/api/clientes")
@@ -54,4 +56,13 @@ public class ClienteController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @GetMapping(value = "/cliente")
+    @ResponseBody
+    public List<Cliente> findAllCliente() {
+        return clienteRepository.findAll();
+    }
+
+
+
 }

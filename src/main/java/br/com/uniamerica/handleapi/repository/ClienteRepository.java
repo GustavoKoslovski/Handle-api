@@ -15,4 +15,6 @@ public interface ClienteRepository extends JpaRepository<Cliente,Long> {
             "WHERE cliente.id = :cliente")
     public void desativar(@Param("cliente") Long idCliente);
 
+        public Cliente findClienteByCpf(String cpf);
+
 }
