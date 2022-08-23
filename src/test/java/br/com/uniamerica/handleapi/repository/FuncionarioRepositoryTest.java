@@ -1,6 +1,7 @@
 package br.com.uniamerica.handleapi.repository;
 
 import br.com.uniamerica.handleapi.entity.Funcionario;
+import br.com.uniamerica.handleapi.service.FuncionarioService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,12 @@ public class FuncionarioRepositoryTest {
     // TESTA CPF DO FUNCIONARIO //
     @Test
     public void insertFuncionario() {
-            Funcionario funcionario = new Funcionario("Ricardo", "55555555555", "09050114903", "0516546854321654", LocalDate.now(), "51564651654", 5800.55);
-            funcionarioRepository.save(funcionario);
+
+        FuncionarioService funcionarioService = new FuncionarioService();
+
+        Funcionario funcionario = new Funcionario("Ricardo", "55555555555", "01395622906", "0516546854321654", LocalDate.now(), "45998383259", 5800.55);
+
+        this.funcionarioRepository.save(funcionario);
 
             Integer countFuncionario = funcionarioRepository.findAll().size();
 
