@@ -21,7 +21,7 @@ public class FuncionarioRepositoryTest {
     // TESTA CPF DO FUNCIONARIO //
     @Test
     public void insertFuncionario() {
-            Funcionario funcionario = new Funcionario("Ricardo", "55555555555", "090111155503", "0516546854321654", LocalDate.now(), "51564651654", 5800.55);
+            Funcionario funcionario = new Funcionario("Ricardo", "55555555555", "09050114903", "0516546854321654", LocalDate.now(), "51564651654", 5800.55);
             funcionarioRepository.save(funcionario);
 
             Integer countFuncionario = funcionarioRepository.findAll().size();
