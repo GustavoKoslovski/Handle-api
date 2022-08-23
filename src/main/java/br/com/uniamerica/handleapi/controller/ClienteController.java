@@ -57,12 +57,4 @@ public class ClienteController {
         }
     }
 
-    @GetMapping(value = "/cliente")
-    @ResponseBody
-    public List<Cliente> findAllCliente() {
-        return clienteRepository.findAll();
-    }
-
-
-
 }

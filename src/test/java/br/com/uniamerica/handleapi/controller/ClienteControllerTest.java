@@ -16,4 +16,7 @@ public class ClienteControllerTest {
 
     @Autowired
     ClienteRepository clienteRepository;
+
+
+
 }

@@ -29,4 +29,7 @@ public class Cliente extends AbstractEntity {
     @Column(name = "telefone", unique = true, length = 18)
     private String telefone;
 
+    public Cliente(String cpf) {
+        this.cpf = cpf;
+    }
 }

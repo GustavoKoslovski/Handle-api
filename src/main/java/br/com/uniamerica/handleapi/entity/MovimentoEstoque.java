@@ -1,6 +1,7 @@
 package br.com.uniamerica.handleapi.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.apache.tomcat.jni.Local;
@@ -16,6 +17,7 @@ import java.util.List;
 
 
 @Entity
+@NoArgsConstructor
 @ToString
 @Table(name = "movimento_estoque", schema = "public")
 public class MovimentoEstoque extends AbstractEntity {
@@ -40,8 +42,4 @@ public class MovimentoEstoque extends AbstractEntity {
     @Column(name = "quantidade", unique = true, nullable = false, length = 15)
     private Integer quantidade;
 
-    @Getter @Setter
-//    @OneToMany
-    @Column(name = "produtos", unique = true, nullable = false, length = 15)
-    private List<Produto> produtos = new ArrayList<>();
 }

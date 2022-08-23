@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface MovEstoqueProdutoRepository extends JpaRepository<MovEstoqueProduto, Long> {
     @Modifying
     @Query("UPDATE MovEstoqueProduto movEstoqueProduto" +
-            "SET MovEstoqueProduto.ativo = false " +
+            " SET movEstoqueProduto.ativo = false " +
             "WHERE movEstoqueProduto.id = :movEstoqueProduto")
     public void desativar(@Param("movEstoqueProduto") Long idMovEstoqueProduto);
 

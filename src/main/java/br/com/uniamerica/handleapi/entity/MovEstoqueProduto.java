@@ -1,6 +1,7 @@
 package br.com.uniamerica.handleapi.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -10,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
+@NoArgsConstructor
 @ToString
 @Table(name = "mov_estoque_produto", schema = "public")
 public class MovEstoqueProduto extends AbstractEntity{
