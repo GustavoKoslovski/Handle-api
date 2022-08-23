@@ -1,5 +1,6 @@
 package br.com.uniamerica.handleapi.service;
 
+import br.com.uniamerica.handleapi.entity.Categoria;
 import br.com.uniamerica.handleapi.entity.Produto;
 import br.com.uniamerica.handleapi.entity.Venda;
 import br.com.uniamerica.handleapi.entity.VendaProduto;
@@ -53,7 +54,73 @@ public class VendaProdutoService {
     //Validacao NotNull Venda
     public Boolean isVendaNotNull(VendaProduto vendaProduto) {
         if (vendaProduto.getVenda() == null) {
-            throw new RuntimeException("A categoria nao foi fornecida.");
+            throw new RuntimeException("A Venda nao foi fornecida.");
+        } else {
+            return true;
+        }
+    }
+
+    //PRODUTO
+
+    //Validacao NotNull Venda
+    public Boolean isProdutoNotNull(VendaProduto vendaProduto) {
+        if (vendaProduto.getProduto() == null) {
+            throw new RuntimeException("O Produto nao foi fornecida.");
+        } else {
+            return true;
+        }
+    }
+
+    //QUANTIDADE
+
+    //Validacao NotNull Quantidade
+    public Boolean isQuantidadeNotNull(VendaProduto vendaProduto) {
+        if (vendaProduto.getQuantidade() == null) {
+            throw new RuntimeException("A Quantidade não foi fornecido");
+        } else {
+            return true;
+        }
+    }
+
+    //PRECO UNITARIO
+
+    //Validacao NotNull PrecoUnitario
+    public Boolean isPrecoUnitarioNotNull(VendaProduto vendaProduto) {
+        if (vendaProduto.getPrecoUnitario() == null) {
+            throw new RuntimeException("O Preco Unitario não foi fornecido");
+        } else {
+            return true;
+        }
+    }
+
+    //PRECO TOTAL BRUTO
+
+    //Validacao NotNull PrecoTotalBruto
+    public Boolean isPrecoTotalBrutoNotNull(VendaProduto vendaProduto) {
+        if (vendaProduto.getPrecoTotalBruto() == null) {
+            throw new RuntimeException("O Preco Total Bruto não foi fornecido");
+        } else {
+            return true;
+        }
+    }
+
+    //DESCONTO
+
+    //Validacao NotNull Desconto
+    public Boolean isDescontoNotNull(VendaProduto vendaProduto) {
+        if (vendaProduto.getDesconto() == null) {
+            throw new RuntimeException("O Desconto não foi fornecido");
+        } else {
+            return true;
+        }
+    }
+
+    //PRECO COM DESCONTO
+
+    //Validacao NotNull PrecoComDesconto
+    public Boolean isPrecoComDescontoNotNull(VendaProduto vendaProduto) {
+        if (vendaProduto.getPrecoComDesconto() == null) {
+            throw new RuntimeException("O PrecoComDesconto não foi fornecido");
         } else {
             return true;
         }
