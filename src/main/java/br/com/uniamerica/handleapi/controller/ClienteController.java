@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @CrossOrigin
 @RequestMapping("/api/clientes")
@@ -56,5 +54,8 @@ public class ClienteController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c4c4e6ffdec176cd210e56d2458d1d16c3f579c
 }

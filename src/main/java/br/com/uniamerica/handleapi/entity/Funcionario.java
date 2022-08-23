@@ -48,4 +48,13 @@ public class Funcionario extends AbstractEntity {
     @Column(name = "salario", nullable = false, precision = 10, scale = 2)
     private Double salario;
 
+    public Funcionario(String nome, String rg, String cpf, String pis, LocalDate dataAdmissao, String telefone, Double salario) {
+        this.nome = nome;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.pis = pis;
+        this.dataAdmissao = dataAdmissao;
+        this.telefone = telefone;
+        this.salario = salario;
+    }
 }
