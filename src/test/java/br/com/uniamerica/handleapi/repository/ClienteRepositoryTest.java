@@ -20,7 +20,7 @@ public class ClienteRepositoryTest {
     @DisplayName("inserindo 1 cliente e listando")
     public void insertCliente() {
 
-            Cliente cliente = new Cliente("14183941903");
+            Cliente cliente = new Cliente("gustavo","14183941903","45999056307");
             clienteRepository.save(cliente);
 
             Integer countCliente = clienteRepository.findAll().size();

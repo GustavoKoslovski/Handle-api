@@ -23,8 +23,6 @@ public class FuncionarioRepositoryTest {
     @Test
     public void insertFuncionario() {
 
-        FuncionarioService funcionarioService = new FuncionarioService();
-
         Funcionario funcionario = new Funcionario("Ricardo", "55555555555", "01395622906", "0516546854321654", LocalDate.now(), "45998383259", 5800.55);
 
         this.funcionarioRepository.save(funcionario);

@@ -21,4 +21,7 @@ public class Categoria extends AbstractEntity{
     @Column(name = "nome", unique = true, length = 50)
     private String nome;
 
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
 }

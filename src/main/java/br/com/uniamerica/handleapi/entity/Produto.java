@@ -6,10 +6,7 @@ import lombok.ToString;
 import org.hibernate.envers.AuditTable;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 
@@ -47,4 +44,13 @@ public class Produto extends AbstractEntity {
     @Column(name = "disponivel", nullable = false, columnDefinition = "bool default true")
     private Boolean disponivel;
 
+    public Produto(String nome, Categoria categoria, Fornecedor fornecedor, String codigoDeBarras, BigDecimal valorCusto, BigDecimal valorVenda, Boolean disponivel) {
+        this.nome = nome;
+        this.categoria = categoria;
+        this.fornecedor = fornecedor;
+        this.codigoDeBarras = codigoDeBarras;
+        this.valorCusto = valorCusto;
+        this.valorVenda = valorVenda;
+        this.disponivel = disponivel;
+    }
 }

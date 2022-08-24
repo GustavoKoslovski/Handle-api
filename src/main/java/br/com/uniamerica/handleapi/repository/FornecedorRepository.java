@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FornecedorRespository extends JpaRepository<Fornecedor,Long> {
+public interface FornecedorRepository extends JpaRepository<Fornecedor,Long> {
 
     @Modifying
     @Query("UPDATE Fornecedor fornecedor " +

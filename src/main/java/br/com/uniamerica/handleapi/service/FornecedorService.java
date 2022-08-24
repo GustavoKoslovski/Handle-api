@@ -1,19 +1,17 @@
 package br.com.uniamerica.handleapi.service;
 import br.com.uniamerica.handleapi.entity.Fornecedor;
-import br.com.uniamerica.handleapi.repository.FornecedorRespository;
+import br.com.uniamerica.handleapi.repository.FornecedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
-import javax.validation.constraints.NotNull;
-import java.lang.reflect.Array;
 
 @Service
 public class FornecedorService {
 
     @Autowired
-    private FornecedorRespository fornecedorRepository;
+    private FornecedorRepository fornecedorRepository;
 
     public Fornecedor findById(Long id) {
         return this.fornecedorRepository.findById(id).orElse(new Fornecedor());

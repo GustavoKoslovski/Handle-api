@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.envers.AuditTable;
 import org.hibernate.envers.Audited;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @NoArgsConstructor
@@ -22,6 +23,7 @@ public class Cliente extends AbstractEntity {
     private String nome;
 
     @Getter @Setter
+    @CPF
     @Column(name = "cpf", unique = true, length = 15)
     private String cpf;
 
@@ -29,7 +31,9 @@ public class Cliente extends AbstractEntity {
     @Column(name = "telefone", unique = true, length = 18)
     private String telefone;
 
-    public Cliente(String cpf) {
+    public Cliente(String nome, String cpf, String telefone) {
+        this.nome = nome;
         this.cpf = cpf;
+        this.telefone = telefone;
     }
 }
