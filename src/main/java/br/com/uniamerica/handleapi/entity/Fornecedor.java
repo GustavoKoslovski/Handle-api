@@ -25,14 +25,7 @@ public class Fornecedor extends AbstractEntity {
     @Column(name = "endereco", nullable = false, length = 100)
     private String endereco;
 
-    @Override
-    public String toString() {
-        return "Fornecedor{" +
-                "nome='" + nome + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
-    }
+
 
     public Fornecedor(String nome, String telefone, String endereco) {
         this.nome = nome;
