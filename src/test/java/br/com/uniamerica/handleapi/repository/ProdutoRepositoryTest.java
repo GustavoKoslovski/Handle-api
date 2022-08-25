@@ -6,36 +6,55 @@ import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+
 import java.math.BigDecimal;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
+@WebMvcTest()
 public class ProdutoRepositoryTest {
 
     @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
     private ProdutoRepository produtoRepository;
 
-    @Autowired
+    @MockBean
     private CategoriaRepository categoriaRepository;
 
-    @Autowired
+    @MockBean
     private FornecedorRepository fornecedorRepository;
 
     @Test
     public void insertProduto() {
+        Produto produto = new Produto();
 
-
-        Categoria categoria = new Categoria();
-        categoria.setNome("bobo");
+        Categoria categoria = new Categoria("bobo");
+        categoriaRepository.save(categoria);
 
         Fornecedor fornecedor = new Fornecedor("Vinicius", "45998383259", "RuaEvaristodaVeiga");
+        fornecedorRepository.save(fornecedor);
 
-        this.fornecedorRepository.save(fornecedor);
 
-        Produto produto = new Produto("CocaCola", categoria, fornecedor, "1233211233211", BigDecimal.valueOf(20.0), BigDecimal.valueOf(30.0), true);
+        produto.setNome("CocaCola");
+        produto.setCategoria(categoria);
+        produto.setFornecedor(fornecedor);
+        produto.setCodigoDeBarras("1233211233211");
+        produto.setValorCusto(BigDecimal.valueOf(20.0));
+        produto.setValorVenda(BigDecimal.valueOf(30.0));
+        produto.setDisponivel(true);
 
         produtoRepository.save(produto);
+
+        int countProduto = produtoRepository.findAll().size();
+        assertEquals(1, countProduto);
 
     }
 

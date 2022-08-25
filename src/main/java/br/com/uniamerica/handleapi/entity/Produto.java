@@ -21,11 +21,13 @@ public class Produto extends AbstractEntity {
     private String nome;
 
     @Getter @Setter
-    @ManyToOne
+    @JoinColumn(name= "idCategoria")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Categoria categoria;
 
     @Getter @Setter
-    @ManyToOne
+    @JoinColumn(name= "idFornecedor")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Fornecedor fornecedor;
 
     @Getter @Setter
