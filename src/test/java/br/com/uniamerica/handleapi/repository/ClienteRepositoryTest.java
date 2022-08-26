@@ -26,7 +26,6 @@ public class ClienteRepositoryTest {
             Integer countCliente = clienteRepository.findAll().size();
 
             assertEquals(1, countCliente);
-
         }
     }
 

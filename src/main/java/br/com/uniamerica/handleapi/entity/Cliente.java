@@ -6,16 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.AuditTable;
-import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @NoArgsConstructor
 @ToString
-
 @Table(name = "clientes", schema = "public")
-
 public class Cliente extends AbstractEntity {
 
     @Getter @Setter

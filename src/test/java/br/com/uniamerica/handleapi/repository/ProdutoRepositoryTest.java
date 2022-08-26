@@ -1,15 +1,13 @@
 package br.com.uniamerica.handleapi.repository;
 import br.com.uniamerica.handleapi.entity.Categoria;
+import br.com.uniamerica.handleapi.entity.Cliente;
 import br.com.uniamerica.handleapi.entity.Fornecedor;
 import br.com.uniamerica.handleapi.entity.Produto;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 
@@ -17,31 +15,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-@WebMvcTest()
 public class ProdutoRepositoryTest {
 
     @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private ProdutoRepository produtoRepository;
-
-    @MockBean
     private CategoriaRepository categoriaRepository;
 
-    @MockBean
+    @Autowired
     private FornecedorRepository fornecedorRepository;
+
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
     @Test
     public void insertProduto() {
-        Produto produto = new Produto();
 
-        Categoria categoria = new Categoria("bobo");
+        Categoria categoria = new Categoria("refrigerante");
         categoriaRepository.save(categoria);
 
-        Fornecedor fornecedor = new Fornecedor("Vinicius", "45998383259", "RuaEvaristodaVeiga");
+        Fornecedor fornecedor = new Fornecedor("daks","45999056307", "ksoadkas");
         fornecedorRepository.save(fornecedor);
 
+        Produto produto = new Produto();
 
         produto.setNome("CocaCola");
         produto.setCategoria(categoria);
@@ -56,6 +50,8 @@ public class ProdutoRepositoryTest {
         int countProduto = produtoRepository.findAll().size();
         assertEquals(1, countProduto);
 
+
     }
+
 
 }
