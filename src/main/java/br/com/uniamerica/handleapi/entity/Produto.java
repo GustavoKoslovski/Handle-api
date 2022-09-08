@@ -3,9 +3,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.AuditTable;
-import org.hibernate.envers.Audited;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
