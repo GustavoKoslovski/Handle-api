@@ -6,15 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.AuditTable;
-import org.hibernate.envers.Audited;
 
 @Entity
 @NoArgsConstructor
 @ToString
-
 @Table(name = "categorias", schema = "public")
-
 public class Categoria extends AbstractEntity{
 
     @Getter @Setter

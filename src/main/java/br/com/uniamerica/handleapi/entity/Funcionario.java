@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.br.CPF;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

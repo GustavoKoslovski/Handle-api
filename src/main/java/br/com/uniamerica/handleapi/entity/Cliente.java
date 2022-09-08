@@ -2,6 +2,8 @@ package br.com.uniamerica.handleapi.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
 import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,9 +15,7 @@ import org.hibernate.validator.constraints.br.CPF;
 @Entity
 @NoArgsConstructor
 @ToString
-
 @Table(name = "clientes", schema = "public")
-
 public class Cliente extends AbstractEntity {
 
     @Getter @Setter
@@ -28,7 +28,8 @@ public class Cliente extends AbstractEntity {
     private String cpf;
 
     @Getter @Setter
-    @Column(name = "telefone", unique = true, length = 18)
+    @Pattern(regexp = "([0-9]{11})")
+    @Column(name = "telefone", length = 18)
     private String telefone;
 
     public Cliente(String nome, String cpf, String telefone) {

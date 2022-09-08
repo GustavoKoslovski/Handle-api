@@ -4,13 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.AuditTable;
-import org.hibernate.envers.Audited;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -25,27 +20,29 @@ public class Venda  extends AbstractEntity{
     private LocalDateTime data;
 
     @Getter @Setter
-    @Column(name = "recebido", nullable = false, precision = 10, scale = 2)
-    private BigDecimal recebido;
+    @Column(name = "valor_recebido", nullable = false, precision = 10, scale = 2)
+    private BigDecimal valorRecebido;
 
     @Getter @Setter
-    @Column(name = "total", nullable = false, precision = 10, scale = 2)
-    private BigDecimal total;
+    @Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
+    private BigDecimal valorTotal;
 
     @Getter @Setter
-    @Column(name = "troco", precision = 10, scale = 2)
-    private BigDecimal troco;
+    @Column(name = "valor_troco", precision = 10, scale = 2)
+    private BigDecimal valorTroco;
 
     @Getter @Setter
-    @Column(name = "desconto", precision = 10, scale = 2)
-    private BigDecimal desconto;
+    @Column(name = "valor_desconto", precision = 10, scale = 2)
+    private BigDecimal valorDesconto;
 
     @Getter @Setter
-    @ManyToOne
+    @JoinColumn(name= "idCliente")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Cliente cliente;
 
     @Getter @Setter
-    @ManyToOne
+    @JoinColumn(name= "idFuncionario")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Funcionario funcionario;
 
 }

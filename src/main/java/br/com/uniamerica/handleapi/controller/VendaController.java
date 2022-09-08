@@ -30,6 +30,7 @@ public class VendaController {
     public ResponseEntity<?> insert(@RequestBody Venda venda) {
         try {
             this.vendaService.insert(venda);
+
             return ResponseEntity.ok().body("Venda cadastrada com sucesso.");
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

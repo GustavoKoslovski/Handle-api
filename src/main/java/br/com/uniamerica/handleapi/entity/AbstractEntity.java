@@ -31,7 +31,6 @@ public abstract class AbstractEntity {
     @Column(name = "ativo", nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean ativo;
 
-
     @PrePersist
     public void dataCadastro(){
         this.cadastro = LocalDateTime.now();

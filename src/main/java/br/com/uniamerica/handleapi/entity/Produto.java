@@ -44,15 +44,15 @@ public class Produto extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "disponivel", nullable = false, columnDefinition = "bool default true")
-    private Boolean disponivel;
+    private Integer quantidade;
 
-    public Produto(String nome, Categoria categoria, Fornecedor fornecedor, String codigoDeBarras, BigDecimal valorCusto, BigDecimal valorVenda, Boolean disponivel) {
+    public Produto(String nome, Categoria categoria, Fornecedor fornecedor, String codigoDeBarras, BigDecimal valorCusto, BigDecimal valorVenda, Integer quantidade) {
         this.nome = nome;
         this.categoria = categoria;
         this.fornecedor = fornecedor;
         this.codigoDeBarras = codigoDeBarras;
         this.valorCusto = valorCusto;
         this.valorVenda = valorVenda;
-        this.disponivel = disponivel;
+        this.quantidade = quantidade;
     }
 }
