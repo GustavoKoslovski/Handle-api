@@ -52,7 +52,7 @@ public class MovimentoEstoqueService {
 
     //VALIDA SE ENTRADA DO ESTOQUE NAO E NULL
     public Boolean isMvEstoqueNotNull(MovimentoEstoque movimentoEstoque) {
-        if (movimentoEstoque.getEntrada() == null) {
+        if (movimentoEstoque.getTipoMovimento() == null) {
             throw new RuntimeException("Favor insira uma entrada.");
         } else {
             return true;

@@ -108,7 +108,7 @@ public class VendaProdutoService {
 
     //Validacao NotNull Desconto
     public Boolean isDescontoNotNull(VendaProduto vendaProduto) {
-        if (vendaProduto.getDesconto() == null) {
+        if (vendaProduto.getValorDesconto() == null) {
             throw new RuntimeException("O Desconto não foi fornecido");
         } else {
             return true;

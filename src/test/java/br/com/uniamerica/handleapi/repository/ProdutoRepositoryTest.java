@@ -43,7 +43,6 @@ public class ProdutoRepositoryTest {
         produto.setCodigoDeBarras("1233211233211");
         produto.setValorCusto(BigDecimal.valueOf(20.0));
         produto.setValorVenda(BigDecimal.valueOf(30.0));
-        produto.setDisponivel(true);
 
         produtoRepository.save(produto);
 

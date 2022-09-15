@@ -16,4 +16,6 @@ public class FornecedorControllerTest {
 
     @Autowired
     FornecedorRepository fornecedorRepository;
+    
+
 }

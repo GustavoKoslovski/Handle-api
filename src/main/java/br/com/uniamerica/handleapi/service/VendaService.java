@@ -104,7 +104,7 @@ public class VendaService {
     }
 
     public Boolean isRecebidoPositivo(Venda venda){
-        if (venda.getRecebido().compareTo(BigDecimal.valueOf(0.0)) != -1) {
+        if (venda.getValorRecebido().compareTo(BigDecimal.valueOf(0.0)) != -1) {
             return true;
         } else {
             throw new RuntimeException("O valor recebido e negativo, favor insira um valor valido.");
@@ -113,8 +113,8 @@ public class VendaService {
 
     public Boolean isRecebidoCaracter(Venda venda) {
         char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
-        for (int i = 0; i < venda.getRecebido().toString().length(); i++) {
-            char chr = venda.getRecebido().toString().charAt(i);
+        for (int i = 0; i < venda.getValorRecebido().toString().length(); i++) {
+            char chr = venda.getValorRecebido().toString().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
                     throw new RuntimeException("O valor recebido da venda nao e valido, favor insira um valor sem caracter especial.");
@@ -125,7 +125,7 @@ public class VendaService {
     }
 
     public Boolean isRecebidoNotNull(Venda venda){
-        if (venda.getRecebido() != null) {
+        if (venda.getValorRecebido() != null) {
             return true;
         } else {
             throw new RuntimeException("O valor recebido da venda não foi fornecido, favor insira um valor valido.");
@@ -133,7 +133,7 @@ public class VendaService {
     }
 
     public Boolean isRecebidoMaiorQueTotal(Venda venda){
-        if (venda.getRecebido().compareTo(venda.getTotal()) != -1) {
+        if (venda.getValorRecebido().compareTo(venda.getValorTotal()) != -1) {
             return true;
         } else {
             throw new RuntimeException("O valor recebido é menor que o total, favor insira um valor valido.");
@@ -141,7 +141,7 @@ public class VendaService {
     }
 
     public Boolean isTotalPositivo(Venda venda){
-        if (venda.getTotal().compareTo(BigDecimal.valueOf(0.0)) != -1) {
+        if (venda.getValorTotal().compareTo(BigDecimal.valueOf(0.0)) != -1) {
             return true;
         } else {
             throw new RuntimeException("O valor total e negativo, favor insira um valor valido.");
@@ -150,8 +150,8 @@ public class VendaService {
 
     public Boolean isTotalCaracter(Venda venda) {
         char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
-        for (int i = 0; i < venda.getTotal().toString().length(); i++) {
-            char chr = venda.getTotal().toString().charAt(i);
+        for (int i = 0; i < venda.getValorTotal().toString().length(); i++) {
+            char chr = venda.getValorTotal().toString().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
                     throw new RuntimeException("O valor total da venda nao e valido, favor insira um valor sem caracter especial.");
@@ -162,7 +162,7 @@ public class VendaService {
     }
 
     public Boolean isTotalNotNull(Venda venda){
-        if (venda.getTotal() != null) {
+        if (venda.getValorTotal() != null) {
             return true;
         } else {
             throw new RuntimeException("O valor total da venda não foi fornecido, favor insira um valor valido.");
@@ -170,7 +170,7 @@ public class VendaService {
     }
 
     public Boolean isDescontoMaiorQueTotal(Venda venda){
-        if (venda.getDesconto().compareTo(venda.getTotal()) == -1) {
+        if (venda.getValorDesconto().compareTo(venda.getValorTotal()) == -1) {
             return true;
         } else {
             throw new RuntimeException("O valor de desconto é menor que o total, favor insira um valor valido.");
@@ -178,7 +178,7 @@ public class VendaService {
     }
 
     public Boolean isDescontoPositivo(Venda venda){
-        if (venda.getDesconto().compareTo(BigDecimal.valueOf(0.0)) != -1) {
+        if (venda.getValorDesconto().compareTo(BigDecimal.valueOf(0.0)) != -1) {
             return true;
         } else {
             throw new RuntimeException("O valor de desconto e negativo, favor insira um valor valido.");
@@ -187,8 +187,8 @@ public class VendaService {
 
     public Boolean isDescontoCaracter(Venda venda) {
         char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ':', ']'};
-        for (int i = 0; i < venda.getDesconto().toString().length(); i++) {
-            char chr = venda.getDesconto().toString().charAt(i);
+        for (int i = 0; i < venda.getValorDesconto().toString().length(); i++) {
+            char chr = venda.getValorDesconto().toString().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
                     throw new RuntimeException("O valor de desconto da venda nao e valido, favor insira um valor sem caracter especial.");
@@ -199,7 +199,7 @@ public class VendaService {
     }
 
     public Boolean isDescontoNotNull(Venda venda){
-        if (venda.getDesconto() != null) {
+        if (venda.getValorDesconto() != null) {
             return true;
         } else {
             throw new RuntimeException("O valor de desconto da venda não foi fornecido, favor insira um valor valido.");

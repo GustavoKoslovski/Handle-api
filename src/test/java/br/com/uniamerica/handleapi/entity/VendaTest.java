@@ -66,7 +66,7 @@ public class VendaTest {
     public void isRecebidoPositivo() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setRecebido(BigDecimal.valueOf(20));
+        venda.setValorRecebido(BigDecimal.valueOf(20));
         assertTrue(vendaService.isRecebidoPositivo(venda));
     }
 
@@ -75,7 +75,7 @@ public class VendaTest {
     public void isRecebidoCaracter() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setRecebido(BigDecimal.valueOf(20));
+        venda.setValorRecebido(BigDecimal.valueOf(20));
         assertTrue(vendaService.isRecebidoCaracter(venda));
     }
 
@@ -84,7 +84,7 @@ public class VendaTest {
     public void isRecebidoNotNull() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setRecebido(BigDecimal.valueOf(20));
+        venda.setValorRecebido(BigDecimal.valueOf(20));
         assertTrue(vendaService.isRecebidoNotNull(venda));
     }
 
@@ -93,8 +93,8 @@ public class VendaTest {
     public void isRecebidoMaiorQueTotal() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setTotal(BigDecimal.valueOf(30));
-        venda.setRecebido(BigDecimal.valueOf(30));
+        venda.setValorTotal(BigDecimal.valueOf(30));
+        venda.setValorRecebido(BigDecimal.valueOf(30));
         assertTrue(vendaService.isRecebidoMaiorQueTotal(venda));
     }
 
@@ -103,7 +103,7 @@ public class VendaTest {
     public void isTotalPositivo() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setTotal(BigDecimal.valueOf(20));
+        venda.setValorTotal(BigDecimal.valueOf(20));
         assertTrue(vendaService.isTotalPositivo(venda));
     }
 
@@ -112,7 +112,7 @@ public class VendaTest {
     public void isTotalCaracter() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setTotal(BigDecimal.valueOf(20));
+        venda.setValorTotal(BigDecimal.valueOf(20));
         assertTrue(vendaService.isTotalCaracter(venda));
     }
 
@@ -121,7 +121,7 @@ public class VendaTest {
     public void isTotalNotNull() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setTotal(BigDecimal.valueOf(20));
+        venda.setValorTotal(BigDecimal.valueOf(20));
         assertTrue(vendaService.isTotalNotNull(venda));
     }
 
@@ -130,8 +130,8 @@ public class VendaTest {
     public void isDescontoMaiorQueTotal() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setTotal(BigDecimal.valueOf(30.0));
-        venda.setDesconto(BigDecimal.valueOf(20.0));
+        venda.setValorTotal(BigDecimal.valueOf(30.0));
+        venda.setValorDesconto(BigDecimal.valueOf(20.0));
         assertTrue(vendaService.isDescontoMaiorQueTotal(venda));
     }
 
@@ -140,7 +140,7 @@ public class VendaTest {
     public void isDescontoPositivo() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setDesconto(BigDecimal.valueOf(20));
+        venda.setValorDesconto(BigDecimal.valueOf(20));
         assertTrue(vendaService.isDescontoPositivo(venda));
     }
 
@@ -149,7 +149,7 @@ public class VendaTest {
     public void isDescontoCaracter() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setDesconto(BigDecimal.valueOf(20));
+        venda.setValorDesconto(BigDecimal.valueOf(20));
         assertTrue(vendaService.isDescontoCaracter(venda));
     }
 
@@ -158,7 +158,7 @@ public class VendaTest {
     public void isDescontoNotNull() {
         Venda venda = new Venda();
         VendaService vendaService = new VendaService();
-        venda.setDesconto(BigDecimal.valueOf(20));
+        venda.setValorDesconto(BigDecimal.valueOf(20));
         assertTrue(vendaService.isDescontoNotNull(venda));
     }
 }

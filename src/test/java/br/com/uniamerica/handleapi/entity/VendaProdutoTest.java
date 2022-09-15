@@ -90,7 +90,7 @@ public class VendaProdutoTest {
         VendaProdutoService vendaProdutoService = new VendaProdutoService();
         BigDecimal desconto = new BigDecimal(0);
 
-        vendaProduto.setDesconto(desconto);
+        vendaProduto.setValorDesconto(desconto);
         assertTrue(vendaProdutoService.isDescontoNotNull(vendaProduto));
     }
 
