@@ -1,5 +1,4 @@
 package br.com.uniamerica.handleapi.service;
-
 import br.com.uniamerica.handleapi.entity.Funcionario;
 import br.com.uniamerica.handleapi.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +25,7 @@ public class FuncionarioService {
 
     @Transactional
     public void insert(Funcionario funcionario){
+        this.validarCadastro(funcionario);
         this.funcionarioRepository.save(funcionario);
     }
 
@@ -171,10 +171,10 @@ public class FuncionarioService {
 
     //Valida se CPF tem menos de 11 caracter
     public Boolean isCpfMenor(Funcionario funcionario) {
-        if (funcionario.getCpf().length() == 11) {
-            return true;
+        if (funcionario.getCpf().length() < 11) {
+            throw new RuntimeException("O cpf informado nao contem 11 digitos");
         } else {
-            throw new RuntimeException("Cliente é invalido");
+            return true;
         }
     }
 
@@ -221,5 +221,17 @@ public class FuncionarioService {
         else{throw new RuntimeException("A data informada é final de semana.");}
     }
 
+    public boolean validarCadastro(Funcionario funcionario){
+        if(this.isNomeNotNull(funcionario) == true &&
+            this.isCpfCaracter(funcionario) == true &&
+                this.isCpfCaracter(funcionario) == true &&
+            this.isCpfMenor(funcionario) == true
+        ){
+                return true;
+
+        }else{
+            return false;
+        }
+    }
 }
 

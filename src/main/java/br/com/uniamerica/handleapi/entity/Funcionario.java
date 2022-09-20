@@ -26,7 +26,7 @@ public class Funcionario extends AbstractEntity {
     private String rg;
 
     @Getter @Setter
-    @CPF
+    @CPF(message = "cpf")
     @Column(name = "cpf", unique = true, nullable = false, length = 15)
     private String cpf;
 
@@ -39,7 +39,6 @@ public class Funcionario extends AbstractEntity {
     private LocalDate dataAdmissao;
 
     @Getter @Setter
-    @Pattern(regexp = "([0-9]{11})")
     @Column(name = "telefone", nullable = false, length = 15)
     private String telefone;
 

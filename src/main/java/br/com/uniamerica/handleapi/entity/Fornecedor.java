@@ -1,5 +1,8 @@
 package br.com.uniamerica.handleapi.entity;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -7,6 +10,7 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @NoArgsConstructor
+@ToString
 @Table(name = "fornecedores", schema = "public")
 public class Fornecedor extends AbstractEntity {
 
@@ -19,7 +23,6 @@ public class Fornecedor extends AbstractEntity {
     private String telefone;
 
     @Getter @Setter
-    @Pattern(regexp = "([0-9]{11})")
     @Column(name = "endereco", nullable = false, length = 100)
     private String endereco;
 
