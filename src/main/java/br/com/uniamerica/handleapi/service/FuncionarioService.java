@@ -223,9 +223,20 @@ public class FuncionarioService {
 
     public boolean validarCadastro(Funcionario funcionario){
         if(this.isNomeNotNull(funcionario) == true &&
-            this.isCpfCaracter(funcionario) == true &&
+                this.isNomeCaracter(funcionario) == true &&
                 this.isCpfCaracter(funcionario) == true &&
-            this.isCpfMenor(funcionario) == true
+                this.isCpfMenor(funcionario) == true &&
+                this.isDataMaior(funcionario) == true &&
+                this.isDataAdmissaoNotNull(funcionario) == true &&
+                this.finalDeSemana(funcionario) == true &&
+                this.isDataAdmissaoNotNull(funcionario) == true &&
+                this.isSalarioNegativo(funcionario) == true &&
+                this.isSalarioCaracter(funcionario) == true &&
+                this.isTelefoneCaracter(funcionario) == true &&
+                this.isTelefoneMenor(funcionario) == true &&
+                this.isTelefoneNotNull(funcionario) == true &&
+                this.isTelefoneNumber(funcionario) == true
+
         ){
                 return true;
 

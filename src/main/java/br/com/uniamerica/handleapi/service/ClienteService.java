@@ -1,5 +1,4 @@
 package br.com.uniamerica.handleapi.service;
-
 import br.com.uniamerica.handleapi.entity.Cliente;
 import br.com.uniamerica.handleapi.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,8 @@ public class ClienteService {
 
     @Transactional
     public void insert(Cliente cliente){
+
+        this.validarCadastro(cliente);
         this.clienteRepository.save(cliente);
     }
 
@@ -139,5 +140,24 @@ public class ClienteService {
         }
         return true;
     }
+
+    public boolean validarCadastro(Cliente cliente){
+        if(this.isNomeNotNull(cliente) == true &&
+                this.isNomeCaracter(cliente) == true &&
+                this.isCpfCaracter(cliente) == true &&
+                this.isCpfMenor(cliente) == true &&
+                this.isTelefoneCaracter(cliente) == true &&
+                this.isTelefoneMenor(cliente) == true &&
+                this.isTelefoneNotNull(cliente) == true
+
+        ){
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+
+
 
 }

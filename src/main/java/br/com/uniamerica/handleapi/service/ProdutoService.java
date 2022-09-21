@@ -1,13 +1,10 @@
 package br.com.uniamerica.handleapi.service;
-
-import br.com.uniamerica.handleapi.entity.Funcionario;
 import br.com.uniamerica.handleapi.entity.Produto;
 import br.com.uniamerica.handleapi.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 
 @Service
@@ -26,6 +23,8 @@ public class ProdutoService {
 
     @Transactional
     public void insert(Produto produto){
+
+        this.validarCadastro(produto);
         this.produtoRepository.save(produto);
     }
 
@@ -136,4 +135,25 @@ public class ProdutoService {
         }
         return true;
     }
+
+    public boolean validarCadastro(Produto produto){
+        if(this.isNomeNotNull(produto) == true &&
+                this.isNomeCaracter(produto) == true &&
+                this.isCategoriaNotNull(produto) == true &&
+                this.isCodigoBarraNotNull(produto) == true &&
+                this.isCodigoBarrasCaracter(produto) == true &&
+                this.isCodigoBarraMenor(produto) == true &&
+                this.isFornecedorNotNull(produto) == true &&
+                this.isFornecedorCaracter(produto) == true
+        ){
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+
+
+
+
 }

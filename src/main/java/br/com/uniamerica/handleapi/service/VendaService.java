@@ -1,8 +1,5 @@
 package br.com.uniamerica.handleapi.service;
-import br.com.uniamerica.handleapi.entity.Categoria;
-import br.com.uniamerica.handleapi.entity.Cliente;
-import br.com.uniamerica.handleapi.entity.Funcionario;
-import br.com.uniamerica.handleapi.entity.Venda;
+import br.com.uniamerica.handleapi.entity.*;
 import br.com.uniamerica.handleapi.repository.VendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +25,8 @@ public class VendaService {
 
     @Transactional
     public void insert(Venda venda){
+
+        this.validarCadastro(venda);
         this.vendaRepository.save(venda);
     }
 
@@ -203,6 +202,36 @@ public class VendaService {
             return true;
         } else {
             throw new RuntimeException("O valor de desconto da venda não foi fornecido, favor insira um valor valido.");
+        }
+    }
+
+
+    public boolean validarCadastro(Venda venda){
+        if(this.isClienteCaracter(venda) == true &&
+                this.isClienteNotNull(venda) == true &&
+                this.isDataCaracter(venda) == true &&
+                this.isDataNotNull(venda) == true &&
+                this.isDataMenorQueAtual(venda) == true &&
+                this.isDescontoCaracter(venda) == true &&
+                this.isDescontoNotNull(venda) == true &&
+                this.isDescontoPositivo(venda) == true &&
+                this.isDescontoMaiorQueTotal(venda) == true &&
+                this.isTotalCaracter(venda) == true &&
+                this.isTotalNotNull(venda) == true &&
+                this.isTotalPositivo(venda) == true &&
+                this.isRecebidoCaracter(venda) == true &&
+                this.isRecebidoNotNull(venda) == true &&
+                this.isDescontoNotNull(venda) == true &&
+                this.isRecebidoCaracter(venda) == true &&
+                this.isRecebidoNotNull(venda) == true &&
+                this.isRecebidoMaiorQueTotal(venda) == true &&
+                this.isRecebidoPositivo(venda) == true
+
+        ){
+            return true;
+
+        }else{
+            return false;
         }
     }
 

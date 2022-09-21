@@ -1,5 +1,4 @@
 package br.com.uniamerica.handleapi.entity;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,7 +7,6 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 @Entity
@@ -26,7 +24,7 @@ public class Funcionario extends AbstractEntity {
     private String rg;
 
     @Getter @Setter
-    @CPF(message = "cpf")
+    @CPF(message = "cpf nao e valido")
     @Column(name = "cpf", unique = true, nullable = false, length = 15)
     private String cpf;
 

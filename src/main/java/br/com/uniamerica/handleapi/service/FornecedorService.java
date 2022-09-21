@@ -23,6 +23,8 @@ public class FornecedorService {
 
     @Transactional
     public void insert(Fornecedor fornecedor) {
+
+        this.validarCadastro(fornecedor);
         this.fornecedorRepository.save(fornecedor);
     }
 
@@ -131,4 +133,22 @@ public class FornecedorService {
     }
     //****//
 
+
+
+    public boolean validarCadastro(Fornecedor fornecedor){
+        if(this.isNomeNotNull(fornecedor) == true &&
+                this.isNomeCaracter(fornecedor) == true &&
+                this.isTelefoneCaracter(fornecedor) == true &&
+                this.isTelefoneMenor(fornecedor) == true &&
+                this.isTelefoneNotNull(fornecedor) == true &&
+                this.isTelefoneNumber(fornecedor) == true &&
+                this.isEnderecoNotNull(fornecedor) == true
+
+        ){
+            return true;
+
+        }else{
+            return false;
+        }
+    }
 }

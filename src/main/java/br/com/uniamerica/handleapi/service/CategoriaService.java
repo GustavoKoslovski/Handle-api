@@ -1,6 +1,5 @@
 package br.com.uniamerica.handleapi.service;
 import br.com.uniamerica.handleapi.entity.Categoria;
-import br.com.uniamerica.handleapi.entity.Categoria;
 import br.com.uniamerica.handleapi.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,6 +23,8 @@ public class CategoriaService {
 
     @Transactional
     public void insert(Categoria categoria){
+
+        this.validarCadastro(categoria);
         this.categoriaRepository.save(categoria);
     }
 
@@ -66,5 +67,18 @@ public class CategoriaService {
         }
         return true;
     }
+
+    public boolean validarCadastro(Categoria categoria){
+        if(this.isNomeNotNull(categoria) == true &&
+                this.isNomeCaracter(categoria) == true
+
+        ){
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+
 
 }
