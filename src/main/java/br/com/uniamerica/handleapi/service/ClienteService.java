@@ -77,10 +77,10 @@ public class ClienteService {
 
     //Valida CPF not null e nao e empty
     public Boolean isCpfNotNull(Cliente cliente) {
-        if (cliente.getCpf() == null || cliente.getCpf().isEmpty()) {
-            throw new RuntimeException("O CPF não foi fornecido, favor insira um CPF valido.");
+        if (cliente.getCpf() != null || !cliente.getCpf().isEmpty()) {
+           return true;
         } else {
-            return true;
+            throw new RuntimeException("O CPF é nulo.");
         }
     }
 

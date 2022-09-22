@@ -25,7 +25,7 @@ public class VendaService {
 
     @Transactional
     public void insert(Venda venda){
-
+        venda.setData(LocalDateTime.now());
         this.validarCadastro(venda);
         this.vendaRepository.save(venda);
     }
@@ -211,7 +211,7 @@ public class VendaService {
                 this.isClienteNotNull(venda) == true &&
                 this.isDataCaracter(venda) == true &&
                 this.isDataNotNull(venda) == true &&
-                this.isDataMenorQueAtual(venda) == true &&
+                //this.isDataMenorQueAtual(venda) == true &&
                 this.isDescontoCaracter(venda) == true &&
                 this.isDescontoNotNull(venda) == true &&
                 this.isDescontoPositivo(venda) == true &&

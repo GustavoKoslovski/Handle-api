@@ -77,16 +77,16 @@ public class FuncionarioService {
     //******* Validação de telefone do Funcionario *******//
 
     public Boolean isTelefoneNotNull(Funcionario funcionario) {
-        if (funcionario.getTelefone() != null || funcionario.getTelefone().isEmpty()) {
-            throw new RuntimeException("Telefone é invalido");
-        } else {
+        if (funcionario.getTelefone() != null || !funcionario.getTelefone().isEmpty()) {
             return true;
+        } else {
+            throw new RuntimeException("Telefone é nulo.");
         }
     }
 
    // Valida se o telefone tem o tamanho correto de numeros. //
     public Boolean isTelefoneMenor(Funcionario funcionario) {
-        if (funcionario.getTelefone().length() != 11) {
+        if (funcionario.getTelefone().length() == 11) {
             return true;
         } else {
             throw new RuntimeException("Telefone é invalido");
@@ -120,8 +120,6 @@ public class FuncionarioService {
         }
         throw new RuntimeException("O telefone contem letras.");
     }
-
-
 
     //****/
 
@@ -194,10 +192,11 @@ public class FuncionarioService {
 
 
     public Boolean isDataAdmissaoNotNull(Funcionario funcionario) {
-        if(funcionario.getDataAdmissao() == null){
+        if(funcionario.getDataAdmissao() != null){
             return true;
-        }else
-            {throw new RuntimeException("Insira uma data");}
+        }else{
+            throw new RuntimeException("A data é nula.");
+        }
     }
 
     //Valida se a data informada é mais do que 2 anos no futuro.

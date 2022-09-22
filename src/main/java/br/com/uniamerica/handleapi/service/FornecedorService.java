@@ -76,10 +76,10 @@ public class FornecedorService {
 
     // Valida se o telefone é nulo ou vazio. //
     public Boolean isTelefoneNotNull(Fornecedor fornecedor) {
-        if (fornecedor.getTelefone() != null || fornecedor.getTelefone().isEmpty()) {
-            throw new RuntimeException("Telefone é invalido");
-        } else {
+        if (fornecedor.getTelefone() != null || !fornecedor.getTelefone().isEmpty()) {
             return true;
+        } else {
+            throw new RuntimeException("Telefone é nulo");
         }
     }
 
@@ -125,10 +125,10 @@ public class FornecedorService {
 
     // Valida se o endereço informado é nulo ou vazio. //
     public Boolean isEnderecoNotNull(Fornecedor fornecedor) {
-        if (fornecedor.getEndereco() == null || fornecedor.getEndereco().isEmpty()) {
-            throw new RuntimeException("O endereco não foi fornecido, favor insira um nome valido.");
-        } else {
+        if (fornecedor.getEndereco() != null || fornecedor.getEndereco().isEmpty()) {
             return true;
+        } else {
+            throw new RuntimeException("O endereco não foi fornecido.");
         }
     }
     //****//

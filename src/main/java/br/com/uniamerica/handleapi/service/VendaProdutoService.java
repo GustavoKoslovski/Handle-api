@@ -1,8 +1,4 @@
 package br.com.uniamerica.handleapi.service;
-
-import br.com.uniamerica.handleapi.entity.Categoria;
-import br.com.uniamerica.handleapi.entity.Produto;
-import br.com.uniamerica.handleapi.entity.Venda;
 import br.com.uniamerica.handleapi.entity.VendaProduto;
 import br.com.uniamerica.handleapi.repository.VendaProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +23,8 @@ public class VendaProdutoService {
 
     @Transactional
     public void insert(VendaProduto vendaProduto){
+
+        this.validarCadastro(vendaProduto);
         this.vendaProdutoRepository.save(vendaProduto);
     }
 
@@ -127,5 +125,23 @@ public class VendaProdutoService {
     }
 
 
+    public Boolean validaQuantidade(VendaProduto vendaProduto) {
+        if (vendaProduto.getQuantidade() <= vendaProduto.getProduto().getQuantidade()) {
+            return true;
+        } else {
+            throw new RuntimeException("Quantidade de " + vendaProduto.getProduto().getNome() + " informada insuficiente em estoque");
+
+        }
+    }
+
+    public boolean validarCadastro(VendaProduto vendaProduto){
+        if(this.validaQuantidade(vendaProduto) == true
+        ){
+            return true;
+
+        }else{
+            return false;
+        }
+    }
 }
 

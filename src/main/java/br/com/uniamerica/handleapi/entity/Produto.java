@@ -40,7 +40,7 @@ public class Produto extends AbstractEntity {
     private BigDecimal valorVenda;
 
     @Getter @Setter
-    @Column(name = "disponivel", nullable = false, columnDefinition = "bool default true")
+    @Column(name = "quantidade")
     private Integer quantidade;
 
     public Produto(String nome, Categoria categoria, Fornecedor fornecedor, String codigoDeBarras, BigDecimal valorCusto, BigDecimal valorVenda, Integer quantidade) {
