@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @CrossOrigin
-@RequestMapping("/api/movimento_stoque")
+@RequestMapping("/api/movimentos_estoque")
 public class MovimentoEstoqueController {
 
     @Autowired

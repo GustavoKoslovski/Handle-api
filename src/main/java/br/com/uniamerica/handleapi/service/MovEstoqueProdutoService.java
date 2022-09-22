@@ -1,7 +1,9 @@
 package br.com.uniamerica.handleapi.service;
 
 import br.com.uniamerica.handleapi.entity.Cliente;
+import br.com.uniamerica.handleapi.entity.Funcionario;
 import br.com.uniamerica.handleapi.entity.MovEstoqueProduto;
+import br.com.uniamerica.handleapi.entity.MovimentoEstoque;
 import br.com.uniamerica.handleapi.repository.MovEstoqueProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -48,4 +50,31 @@ public class MovEstoqueProdutoService {
         }
     }
 
+    public Boolean isMvEstoqueProdutoNotNull(MovEstoqueProduto movEstoqueProduto) {
+        if (movEstoqueProduto.getProduto() != null) {
+            return true;
+        }else {
+            throw new RuntimeException("Produto informado invalido");
+        }
+    }
+
+    public Boolean validaQuantidade(MovEstoqueProduto movEstoqueProduto){
+        if (movEstoqueProduto.getQuantidade() <= movEstoqueProduto.getProduto().getQuantidade()){
+            return true;
+        }else{
+            throw new RuntimeException("Quantidade informada de " + movEstoqueProduto.getProduto().getNome() + "insuficiente no estoque");
+        }
+
+    }
+
+    public Boolean validarCadastro(MovEstoqueProduto movEstoqueProduto){
+        if(this.isMvEstoqueProdutoNotNull(movEstoqueProduto) == true &&
+                this.validaQuantidade(movEstoqueProduto) == true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
+
