@@ -1,4 +1,6 @@
 package br.com.uniamerica.handleapi.service;
+import br.com.uniamerica.handleapi.entity.Produto;
+import br.com.uniamerica.handleapi.entity.Venda;
 import br.com.uniamerica.handleapi.entity.VendaProduto;
 import br.com.uniamerica.handleapi.repository.VendaProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 
 @Service
 public class VendaProdutoService {
@@ -91,47 +94,20 @@ public class VendaProdutoService {
         }
     }
 
-    //PRECO TOTAL BRUTO
-
-    //Validacao NotNull PrecoTotalBruto
-    public Boolean isPrecoTotalBrutoNotNull(VendaProduto vendaProduto) {
-        if (vendaProduto.getPrecoTotalBruto() == null) {
-            throw new RuntimeException("O Preco Total Bruto não foi fornecido");
-        } else {
-            return true;
-        }
-    }
-
-    //DESCONTO
-
-    //Validacao NotNull Desconto
-    public Boolean isDescontoNotNull(VendaProduto vendaProduto) {
-        if (vendaProduto.getValorDesconto() == null) {
-            throw new RuntimeException("O Desconto não foi fornecido");
-        } else {
-            return true;
-        }
-    }
-
-    //PRECO COM DESCONTO
-
-    //Validacao NotNull PrecoComDesconto
-    public Boolean isPrecoComDescontoNotNull(VendaProduto vendaProduto) {
-        if (vendaProduto.getPrecoComDesconto() == null) {
-            throw new RuntimeException("O PrecoComDesconto não foi fornecido");
-        } else {
-            return true;
-        }
-    }
-
-
     public Boolean validaQuantidade(VendaProduto vendaProduto) {
         if (vendaProduto.getQuantidade() <= vendaProduto.getProduto().getQuantidade()) {
             return true;
         } else {
             throw new RuntimeException("Quantidade de " + vendaProduto.getProduto().getNome() + " informada insuficiente em estoque");
-
         }
+    }
+
+    public void setPrecoUnitario(VendaProduto vendaProduto){
+        vendaProduto.setPrecoUnitario(vendaProduto.getProduto().getValorVenda());
+    }
+
+    public void setPrecoFinal(VendaProduto vendaProduto){
+        vendaProduto.setPrecoFinal(vendaProduto.getPrecoUnitario().multiply(BigDecimal.valueOf(vendaProduto.getQuantidade())));
     }
 
     public boolean validarCadastro(VendaProduto vendaProduto){

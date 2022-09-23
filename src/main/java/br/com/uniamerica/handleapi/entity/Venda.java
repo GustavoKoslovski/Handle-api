@@ -36,6 +36,10 @@ public class Venda  extends AbstractEntity{
     private BigDecimal valorDesconto;
 
     @Getter @Setter
+    @Column(name = "valor_final", nullable = false, precision = 10, scale = 2)
+    private BigDecimal valorFinal;
+
+    @Getter @Setter
     @JoinColumn(name= "idCliente")
     @ManyToOne(fetch = FetchType.EAGER)
     private Cliente cliente;

@@ -66,46 +66,19 @@ public class VendaProdutoTest {
         assertTrue(vendaProdutoService.isPrecoUnitarioNotNull(vendaProduto));
     }
 
-    //PRECO PRECOTOTALBRUTO
-
-    //Testa se PrecoTotalBruto nao e null
     @Test
-    @DisplayName("PrecoTotalBruto nao e nula - VendaProduto")
-    public void isPrecoTotalBrutoNotNull() {
+    public void precoFinalTest(){
         VendaProduto vendaProduto = new VendaProduto();
         VendaProdutoService vendaProdutoService = new VendaProdutoService();
-        BigDecimal precoTotalBruto = new BigDecimal(0);
+        Produto produto = new Produto();
+        produto.setValorVenda(BigDecimal.valueOf(5));
+        vendaProduto.setProduto(produto);
+        vendaProduto.setQuantidade(5);
+        vendaProdutoService.setPrecoUnitario(vendaProduto);
+        vendaProdutoService.setPrecoFinal(vendaProduto);
 
-        vendaProduto.setPrecoTotalBruto(precoTotalBruto);
-        assertTrue(vendaProdutoService.isPrecoTotalBrutoNotNull(vendaProduto));
-    }
+        System.out.println(vendaProduto.getPrecoFinal());
 
-    //DESCONTO
-
-    //Testa se Desconto nao e null
-    @Test
-    @DisplayName("Desconto nao e nula - VendaProduto")
-    public void isDescontoNotNull() {
-        VendaProduto vendaProduto = new VendaProduto();
-        VendaProdutoService vendaProdutoService = new VendaProdutoService();
-        BigDecimal desconto = new BigDecimal(0);
-
-        vendaProduto.setValorDesconto(desconto);
-        assertTrue(vendaProdutoService.isDescontoNotNull(vendaProduto));
-    }
-
-    //PRECOCOMDESCONTO
-
-    //Testa se PrecoComDesconto nao e null
-    @Test
-    @DisplayName("PrecoComDesconto nao e nula - VendaProduto")
-    public void isPrecoComDescontoNotNull() {
-        VendaProduto vendaProduto = new VendaProduto();
-        VendaProdutoService vendaProdutoService = new VendaProdutoService();
-        BigDecimal precoComDesconto = new BigDecimal(0);
-
-        vendaProduto.setPrecoComDesconto(precoComDesconto);
-        assertTrue(vendaProdutoService.isPrecoComDescontoNotNull(vendaProduto));
     }
 
 

@@ -69,7 +69,8 @@ public class MovEstoqueProdutoService {
 
     public Boolean validarCadastro(MovEstoqueProduto movEstoqueProduto){
         if(this.isMvEstoqueProdutoNotNull(movEstoqueProduto) == true &&
-                this.validaQuantidade(movEstoqueProduto) == true){
+           this.validaQuantidade(movEstoqueProduto) == true)
+        {
             return true;
         }else{
             return false;

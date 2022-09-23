@@ -205,6 +205,19 @@ public class VendaService {
         }
     }
 
+    public void setValorTotal(Venda venda, VendaProduto vendaProduto[]){
+        for (int i = 0; i <= vendaProduto.length; i++){
+            venda.setValorTotal(venda.getValorTotal().add(vendaProduto[i].getPrecoFinal()));
+        }
+    }
+
+    public void setValorFinal(Venda venda){
+        venda.setValorFinal(venda.getValorTotal().subtract(venda.getValorDesconto()));
+    }
+
+    public void setValorTroco(Venda venda){
+        venda.setValorTroco(venda.getValorRecebido().subtract(venda.getValorFinal()));
+    }
 
     public boolean validarCadastro(Venda venda){
         if(this.isClienteCaracter(venda) == true &&
@@ -226,10 +239,8 @@ public class VendaService {
                 this.isRecebidoNotNull(venda) == true &&
                 this.isRecebidoMaiorQueTotal(venda) == true &&
                 this.isRecebidoPositivo(venda) == true
-
         ){
             return true;
-
         }else{
             return false;
         }

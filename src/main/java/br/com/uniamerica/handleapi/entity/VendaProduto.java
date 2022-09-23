@@ -32,15 +32,7 @@ public class VendaProduto extends AbstractEntity{
     private BigDecimal precoUnitario;
 
     @Getter @Setter
-    @Column(name = "preco_total_bruto", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoTotalBruto;
-
-    @Getter @Setter
-    @Column(name = "valor_desconto", precision = 10, scale = 2)
-    private BigDecimal valorDesconto;
-
-    @Getter @Setter
-    @Column(name = "preco_com_desconto", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoComDesconto;
+    @Column(name = "preco_final", nullable = false, precision = 10, scale = 2)
+    private BigDecimal precoFinal;
 
 }
