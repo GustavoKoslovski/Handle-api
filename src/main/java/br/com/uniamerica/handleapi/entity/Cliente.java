@@ -26,7 +26,6 @@ public class Cliente extends AbstractEntity {
     private String cpf;
 
     @Getter @Setter
-    @Pattern(regexp = "([0-9]{11})")
     @Column(name = "telefone", length = 18)
     private String telefone;
 
