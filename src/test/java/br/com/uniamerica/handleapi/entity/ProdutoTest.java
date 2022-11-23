@@ -95,6 +95,16 @@ public class ProdutoTest {
         assertTrue(produtoService.isFornecedorCaracter(produto));
     }
 
+    @Test
+    public void quantidadeNull(){
+
+        Produto produto = new Produto();
+        Categoria categoria = new Categoria();
+        Fornecedor fornecedor = new Fornecedor();
+
+
+    }
+
 
 }
 
