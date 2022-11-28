@@ -157,7 +157,7 @@ public class ProdutoService {
 
     public void quantidadeNull (Produto produto){
         if(produto.getQuantidade()==null){
-            produto.setQuantidade(0);
+            produto.setQuantidade(2);
         }
     }
 
