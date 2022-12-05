@@ -166,9 +166,9 @@ public class ProdutoService {
 
     public Boolean valorDeVendaMenor (Produto produto) {
         if (produto.getValorVenda().compareTo(produto.getValorCusto()) == 0 || produto.getValorVenda().compareTo(produto.getValorCusto()) == -1) {
-            return true;
-        }else{
             throw new RuntimeException("O valor de venda não pode ser menor ou igual ao de custo");
+        }else{
+            return true;
         }
 
     }
