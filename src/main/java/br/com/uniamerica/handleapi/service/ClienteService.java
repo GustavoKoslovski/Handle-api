@@ -89,7 +89,7 @@ public class ClienteService {
         if (cliente.getCpf().length() == 11) {
             return true;
         } else {
-            throw new RuntimeException("Cliente é invalido");
+            throw new RuntimeException("CPF é invalido");
         }
     }
 
@@ -100,7 +100,7 @@ public class ClienteService {
             char chr = cliente.getCpf().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O CPF fornecido nao e valido, favor insira um CPF sem caracter especial");
+                    throw new RuntimeException("O CPF fornecido nao e valido, favor insira apenas números");
                 }
             }
         }

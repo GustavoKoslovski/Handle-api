@@ -28,7 +28,7 @@ public class Produto extends AbstractEntity {
     private Fornecedor fornecedor;
 
     @Getter @Setter
-    @Column(name = "codigo_de_barras", nullable = false, unique = true, length = 13)
+    @Column(name = "codigo_de_barras", nullable = false, length = 13)
     private String codigoDeBarras;
 
     @Getter @Setter

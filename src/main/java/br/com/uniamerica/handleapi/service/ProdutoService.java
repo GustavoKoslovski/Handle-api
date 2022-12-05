@@ -24,7 +24,7 @@ public class ProdutoService {
     @Transactional
     public void insert(Produto produto){
 
-//        this.validarCadastro(produto);
+        this.validarCadastro(produto);
         this.quantidadeNull(produto);
         this.produtoRepository.save(produto);
     }
@@ -137,30 +137,39 @@ public class ProdutoService {
         return true;
     }
 
-//    public boolean validarCadastro(Produto produto){
-//        if(this.isNomeNotNull(produto) == true &&
-//                this.isNomeCaracter(produto) == true &&
-//                this.isCategoriaNotNull(produto) == true &&
-//                this.isCodigoBarraNotNull(produto) == true &&
-//                this.isCodigoBarrasCaracter(produto) == true &&
-//                this.isCodigoBarraMenor(produto) == true &&
-//                this.isFornecedorNotNull(produto) == true &&
-//                this.isFornecedorCaracter(produto) == true
-//        ){
-//            return true;
-//
-//        }else{
-//            return false;
-//        }
-//    }
 
 
-    public void quantidadeNull (Produto produto){
-        if(produto.getQuantidade()==null){
-            produto.setQuantidade(2);
+    public boolean validarCadastro(Produto produto){
+        if(this.isNomeNotNull(produto) == true &&
+              this.isNomeCaracter(produto) == true &&
+                this.isCategoriaNotNull(produto) == true &&
+                this.isCodigoBarraNotNull(produto) == true &&
+                this.isCodigoBarrasCaracter(produto) == true &&
+                this.isCodigoBarraMenor(produto) == true &&
+                this.isFornecedorNotNull(produto) == true &&
+                this.isFornecedorCaracter(produto) == true &&
+                this.valorDeVendaMenor(produto) == true
+        ){
+            return true;
+
+        }else{
+            return false;
         }
     }
 
 
+    public void quantidadeNull (Produto produto){
+        if(produto.getQuantidade()==null){
+            produto.setQuantidade(0);
+        }
+    }
 
+    public Boolean valorDeVendaMenor (Produto produto) {
+        if (produto.getValorVenda().compareTo(produto.getValorCusto()) == 0 || produto.getValorVenda().compareTo(produto.getValorCusto()) == -1) {
+            return true;
+        }else{
+            throw new RuntimeException("O valor de venda não pode ser menor ou igual ao de custo");
+        }
+
+    }
 }
