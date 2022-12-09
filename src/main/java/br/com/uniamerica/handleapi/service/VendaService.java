@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @Service
 public class VendaService {
 
+    VendaProdutoService vendaProdutoService = new VendaProdutoService();
+
     @Autowired
     private VendaRepository vendaRepository;
 
@@ -24,10 +26,15 @@ public class VendaService {
     }
 
     @Transactional
-    public void insert(Venda venda){
-        venda.setData(LocalDateTime.now());
+    public void insert(Venda venda, VendaProduto[] vendaProdutos){
         this.validarCadastro(venda);
         this.vendaRepository.save(venda);
+
+        if(venda.getId() != null){
+            for(int i = 0; i < vendaProdutos.length; i++){
+                vendaProdutoService.insert(vendaProdutos[i]);
+            }
+        }
     }
 
     @Transactional
@@ -72,35 +79,9 @@ public class VendaService {
         return true;
     }
 
-    public Boolean isDataNotNull(Venda venda) {
-        if (venda.getData() != null) {
-            return true;
-        } else {
-            throw new RuntimeException("A data da venda não foi fornecida, favor insira uma data valida.");
-        }
-    }
 
-    public Boolean isDataCaracter(Venda venda) {
-        char[] charSearch = {'[', '@', '_', '!', '#', '$', '%', '^', '&', '*', '(', ')', '<', '>', '?', '/', '|', '}', '{', '~', ']'};
-        for (int i = 0; i < venda.getData().toString().length(); i++) {
-            char chr = venda.getData().toString().charAt(i);
-            for (int j = 0; j < charSearch.length; j++) {
-                if (charSearch[j] == chr) {
-                    throw new RuntimeException("A data da venda fornecida nao e valida, favor insira uma data sem caracter especial.");
-                }
-            }
-        }
-        return true;
-    }
 
-    public Boolean isDataMenorQueAtual(Venda venda) {
-        LocalDateTime dataAtual = LocalDateTime.now();
-        if (venda.getData().isBefore(dataAtual)) {
-            return true;
-        } else {
-            throw new RuntimeException("A data da venda e maior que a atual, favor insira uma data valida.");
-        }
-    }
+
 
     public Boolean isRecebidoPositivo(Venda venda){
         if (venda.getValorRecebido().compareTo(BigDecimal.valueOf(0.0)) != -1) {
@@ -222,8 +203,6 @@ public class VendaService {
     public boolean validarCadastro(Venda venda){
         if(this.isClienteCaracter(venda) == true &&
                 this.isClienteNotNull(venda) == true &&
-                this.isDataCaracter(venda) == true &&
-                this.isDataNotNull(venda) == true &&
                 //this.isDataMenorQueAtual(venda) == true &&
                 this.isDescontoCaracter(venda) == true &&
                 this.isDescontoNotNull(venda) == true &&
