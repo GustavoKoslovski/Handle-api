@@ -28,7 +28,7 @@ public class VendaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> insert(@RequestBody Venda venda, VendaProduto[] vendaProdutos) {
+    public ResponseEntity<?> insert(@RequestParam(required = false, name = "venda") Venda venda , @RequestParam(required = false, name = "vendaProduto") VendaProduto[] vendaProdutos) {
         try {
             this.vendaService.insert(venda, vendaProdutos);
 

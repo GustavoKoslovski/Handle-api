@@ -16,11 +16,11 @@ import java.time.LocalDateTime;
 public class Venda  extends AbstractEntity{
 
     @Getter @Setter
-    @Column(name = "valor_recebido", nullable = false, precision = 10, scale = 2)
+    @Column(name = "valor_recebido", precision = 10, scale = 2)
     private BigDecimal valorRecebido;
 
     @Getter @Setter
-    @Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
+    @Column(name = "valor_total",  precision = 10, scale = 2)
     private BigDecimal valorTotal;
 
     @Getter @Setter
@@ -32,7 +32,7 @@ public class Venda  extends AbstractEntity{
     private BigDecimal valorDesconto;
 
     @Getter @Setter
-    @Column(name = "valor_final", nullable = false, precision = 10, scale = 2)
+    @Column(name = "valor_final",  precision = 10, scale = 2)
     private BigDecimal valorFinal;
 
     @Getter @Setter

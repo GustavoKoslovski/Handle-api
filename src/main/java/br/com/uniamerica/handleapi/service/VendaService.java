@@ -27,12 +27,14 @@ public class VendaService {
 
     @Transactional
     public void insert(Venda venda, VendaProduto[] vendaProdutos){
-        this.validarCadastro(venda);
-        this.vendaRepository.save(venda);
+
+//        this.validarCadastro(venda);
+        venda = this.vendaRepository.save(venda);
 
         if(venda.getId() != null){
             for(int i = 0; i < vendaProdutos.length; i++){
-                vendaProdutoService.insert(vendaProdutos[i]);
+
+                vendaProdutoService.insert(vendaProdutos[i], venda);
             }
         }
     }
@@ -200,30 +202,30 @@ public class VendaService {
         venda.setValorTroco(venda.getValorRecebido().subtract(venda.getValorFinal()));
     }
 
-    public boolean validarCadastro(Venda venda){
-        if(this.isClienteCaracter(venda) == true &&
-                this.isClienteNotNull(venda) == true &&
-                //this.isDataMenorQueAtual(venda) == true &&
-                this.isDescontoCaracter(venda) == true &&
-                this.isDescontoNotNull(venda) == true &&
-                this.isDescontoPositivo(venda) == true &&
-                this.isDescontoMaiorQueTotal(venda) == true &&
-                this.isTotalCaracter(venda) == true &&
-                this.isTotalNotNull(venda) == true &&
-                this.isTotalPositivo(venda) == true &&
-                this.isRecebidoCaracter(venda) == true &&
-                this.isRecebidoNotNull(venda) == true &&
-                this.isDescontoNotNull(venda) == true &&
-                this.isRecebidoCaracter(venda) == true &&
-                this.isRecebidoNotNull(venda) == true &&
-                this.isRecebidoMaiorQueTotal(venda) == true &&
-                this.isRecebidoPositivo(venda) == true
-        ){
-            return true;
-        }else{
-            return false;
-        }
-    }
+//    public boolean validarCadastro(Venda venda){
+//        if(this.isClienteCaracter(venda) == true &&
+//                this.isClienteNotNull(venda) == true &&
+//                //this.isDataMenorQueAtual(venda) == true &&
+//                this.isDescontoCaracter(venda) == true &&
+//                this.isDescontoNotNull(venda) == true &&
+//                this.isDescontoPositivo(venda) == true &&
+//                this.isDescontoMaiorQueTotal(venda) == true &&
+//                this.isTotalCaracter(venda) == true &&
+//                this.isTotalNotNull(venda) == true &&
+//                this.isTotalPositivo(venda) == true &&
+//                this.isRecebidoCaracter(venda) == true &&
+//                this.isRecebidoNotNull(venda) == true &&
+//                this.isDescontoNotNull(venda) == true &&
+//                this.isRecebidoCaracter(venda) == true &&
+//                this.isRecebidoNotNull(venda) == true &&
+//                this.isRecebidoMaiorQueTotal(venda) == true &&
+//                this.isRecebidoPositivo(venda) == true
+//        ){
+//            return true;
+//        }else{
+//            return false;
+//        }
+//    }
 
 
 
