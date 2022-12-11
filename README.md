@@ -6,7 +6,7 @@
 <a href="https://spring.io/projects/spring-boot/">Spring-boot</a>
 </h1>
 
-<p align="center">⭐ Dependencias</p>
+<p align="center">dependencias</p>
 
 ### Pré-requisitos
 
