@@ -34,32 +34,11 @@ public class VendaTest {
         assertTrue(vendaService.isClienteCaracter(venda));
     }
 
-    @Test
-    @DisplayName("Data da venda nao e nula")
-    public void isDataNotNull() {
-        Venda venda = new Venda();
-        VendaService vendaService = new VendaService();
-        venda.setData(LocalDateTime.of(2020, 4, 18, 20, 20));
-        assertTrue(vendaService.isDataNotNull(venda));
-    }
 
-    @Test
-    @DisplayName("Data da venda contém caracter especial")
-    public void isDataCaracter() {
-        Venda venda = new Venda();
-        VendaService vendaService = new VendaService();
-        venda.setData(LocalDateTime.of(2020, 4, 18, 20, 20));
-        assertTrue(vendaService.isDataCaracter(venda));
-    }
 
-    @Test
-    @DisplayName("Data da venda e menor que a atual")
-    public void isDataMenorQueAtual() {
-        Venda venda = new Venda();
-        VendaService vendaService = new VendaService();
-        venda.setData(LocalDateTime.of(2022, 4, 18, 20, 20));
-        assertTrue(vendaService.isDataMenorQueAtual(venda));
-    }
+
+
+
 
     @Test
     @DisplayName("Valor recebido da venda e positivo")

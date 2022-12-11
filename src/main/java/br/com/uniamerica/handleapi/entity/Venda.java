@@ -16,15 +16,11 @@ import java.time.LocalDateTime;
 public class Venda  extends AbstractEntity{
 
     @Getter @Setter
-    @Column(name = "data", nullable = false)
-    private LocalDateTime data;
-
-    @Getter @Setter
-    @Column(name = "valor_recebido", nullable = false, precision = 10, scale = 2)
+    @Column(name = "valor_recebido", precision = 10, scale = 2)
     private BigDecimal valorRecebido;
 
     @Getter @Setter
-    @Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
+    @Column(name = "valor_total",  precision = 10, scale = 2)
     private BigDecimal valorTotal;
 
     @Getter @Setter
@@ -36,7 +32,7 @@ public class Venda  extends AbstractEntity{
     private BigDecimal valorDesconto;
 
     @Getter @Setter
-    @Column(name = "valor_final", nullable = false, precision = 10, scale = 2)
+    @Column(name = "valor_final",  precision = 10, scale = 2)
     private BigDecimal valorFinal;
 
     @Getter @Setter
@@ -49,4 +45,13 @@ public class Venda  extends AbstractEntity{
     @ManyToOne(fetch = FetchType.EAGER)
     private Funcionario funcionario;
 
+    public Venda(BigDecimal valorRecebido, BigDecimal valorTotal, BigDecimal valorTroco, BigDecimal valorDesconto, BigDecimal valorFinal, Cliente cliente, Funcionario funcionario) {
+        this.valorRecebido = valorRecebido;
+        this.valorTotal = valorTotal;
+        this.valorTroco = valorTroco;
+        this.valorDesconto = valorDesconto;
+        this.valorFinal = valorFinal;
+        this.cliente = cliente;
+        this.funcionario = funcionario;
+    }
 }

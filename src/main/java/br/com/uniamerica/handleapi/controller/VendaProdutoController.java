@@ -1,5 +1,6 @@
 package br.com.uniamerica.handleapi.controller;
 
+import br.com.uniamerica.handleapi.entity.Venda;
 import br.com.uniamerica.handleapi.entity.VendaProduto;
 import br.com.uniamerica.handleapi.service.VendaProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class VendaProdutoController {
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody VendaProduto vendaProduto) {
         try {
+
             this.vendaProdutoService.insert(vendaProduto);
             return ResponseEntity.ok().body("VendaProduto cadastrada com sucesso.");
         }catch (Exception e) {

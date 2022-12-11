@@ -27,7 +27,6 @@ public class VendaProdutoService {
     @Transactional
     public void insert(VendaProduto vendaProduto){
 
-        this.validarCadastro(vendaProduto);
         this.vendaProdutoRepository.save(vendaProduto);
     }
 

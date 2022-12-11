@@ -1,6 +1,7 @@
 package br.com.uniamerica.handleapi.controller;
 
 import br.com.uniamerica.handleapi.entity.Venda;
+import br.com.uniamerica.handleapi.entity.VendaProduto;
 import br.com.uniamerica.handleapi.service.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
