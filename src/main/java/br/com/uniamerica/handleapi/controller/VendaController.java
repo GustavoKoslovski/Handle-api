@@ -28,9 +28,9 @@ public class VendaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> insert(@RequestParam(required = false, name = "venda") Venda venda , @RequestParam(required = false, name = "vendaProduto") VendaProduto[] vendaProdutos) {
+    public ResponseEntity<?> insert(@RequestBody Venda venda) {
         try {
-            this.vendaService.insert(venda, vendaProdutos);
+            this.vendaService.insert(venda);
 
             return ResponseEntity.ok().body("Venda cadastrada com sucesso.");
         }catch (Exception e) {

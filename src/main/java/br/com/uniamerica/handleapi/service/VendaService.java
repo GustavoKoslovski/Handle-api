@@ -26,17 +26,17 @@ public class VendaService {
     }
 
     @Transactional
-    public void insert(Venda venda, VendaProduto[] vendaProdutos){
+    public void insert(Venda venda){
 
 //        this.validarCadastro(venda);
-        venda = this.vendaRepository.save(venda);
+        this.vendaRepository.save(venda);
 
-        if(venda.getId() != null){
-            for(int i = 0; i < vendaProdutos.length; i++){
-
-                vendaProdutoService.insert(vendaProdutos[i], venda);
-            }
-        }
+//        if(venda.getId() != null){
+//            for(int i = 0; i < vendaProdutos.length; i++){
+//
+//                vendaProdutoService.insert(vendaProdutos[i], venda);
+//            }
+//        }
     }
 
     @Transactional
