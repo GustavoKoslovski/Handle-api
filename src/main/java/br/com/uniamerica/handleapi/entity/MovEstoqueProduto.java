@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
@@ -24,4 +25,12 @@ public class MovEstoqueProduto extends AbstractEntity{
     @Getter @Setter
     @Column(name = "quantidade", nullable = false)
     private Integer quantidade;
+
+    @Getter @Setter
+    @Column(name = "preco_unitario", nullable = false, precision = 10, scale = 2)
+    private BigDecimal precoUnitario;
+
+    @Getter @Setter
+    @Column(name = "preco_final", nullable = false, precision = 10, scale = 2)
+    private BigDecimal precoFinal;
 }
