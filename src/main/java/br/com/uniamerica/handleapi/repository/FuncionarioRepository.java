@@ -14,5 +14,4 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario,Long> {
             "SET funcionario.ativo = false " +
             "WHERE funcionario.id = :funcionario")
     public void desativar(@Param("funcionario") Long idFuncionario);
-
 }

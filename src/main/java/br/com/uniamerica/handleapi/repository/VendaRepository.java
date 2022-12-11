@@ -15,4 +15,5 @@ public interface VendaRepository extends JpaRepository<Venda,Long> {
             "WHERE venda.id = :venda")
     public void desativar(@Param("venda") Long idVenda);
 
+
 }

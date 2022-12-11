@@ -1,6 +1,7 @@
 package br.com.uniamerica.handleapi.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.apache.tomcat.jni.Local;
@@ -16,32 +17,25 @@ import java.util.List;
 
 
 @Entity
+@NoArgsConstructor
 @ToString
 @Table(name = "movimento_estoque", schema = "public")
 public class MovimentoEstoque extends AbstractEntity {
 
     @Getter @Setter
-    @Column(name = "entrada", unique = true, nullable = false, length = 15)
-    private Boolean entrada;
+    @Column(name = "tipo_movimento", nullable = false)
+    private Boolean tipoMovimento;
 
     @Getter @Setter
-    @Column(name = "saida", unique = true, nullable = false, length = 15)
-    private Boolean saida;
-
-    @Getter @Setter
-    @Column(name = "data", unique = true, nullable = false, length = 15)
+    @Column(name = "data", nullable = false)
     private LocalDateTime data;
 
     @Getter @Setter
-    @Column(name = "valor", unique = true, nullable = false, length = 15)
+    @Column(name = "valor", nullable = false)
     private Double valor;
 
     @Getter @Setter
-    @Column(name = "quantidade", unique = true, nullable = false, length = 15)
-    private Integer quantidade;
+    @Column(name = "quantidade_total", nullable = false)
+    private Integer quantidadeTotal;
 
-    @Getter @Setter
-//    @OneToMany
-    @Column(name = "produtos", unique = true, nullable = false, length = 15)
-    private List<Produto> produtos = new ArrayList<>();
 }

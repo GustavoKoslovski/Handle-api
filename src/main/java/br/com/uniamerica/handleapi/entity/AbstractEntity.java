@@ -11,7 +11,7 @@ public abstract class AbstractEntity {
 
     @Getter @Setter
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -30,7 +30,6 @@ public abstract class AbstractEntity {
     @Getter @Setter
     @Column(name = "ativo", nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean ativo;
-
 
     @PrePersist
     public void dataCadastro(){

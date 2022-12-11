@@ -3,14 +3,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.AuditTable;
-import org.hibernate.envers.Audited;
-
+import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
@@ -27,6 +24,7 @@ public class Funcionario extends AbstractEntity {
     private String rg;
 
     @Getter @Setter
+    @CPF(message = "cpf nao e valido")
     @Column(name = "cpf", unique = true, nullable = false, length = 15)
     private String cpf;
 
@@ -36,7 +34,7 @@ public class Funcionario extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "data_admissao" )
-    private String dataAdmissao;
+    private LocalDate dataAdmissao;
 
     @Getter @Setter
     @Column(name = "telefone", nullable = false, length = 15)
@@ -44,6 +42,15 @@ public class Funcionario extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "salario", nullable = false, precision = 10, scale = 2)
-    private BigDecimal salario;
+    private Double salario;
 
+    public Funcionario(String nome, String rg, String cpf, String pis, LocalDate dataAdmissao, String telefone, Double salario) {
+        this.nome = nome;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.pis = pis;
+        this.dataAdmissao = dataAdmissao;
+        this.telefone = telefone;
+        this.salario = salario;
+    }
 }

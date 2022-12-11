@@ -3,13 +3,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.AuditTable;
-import org.hibernate.envers.Audited;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 
@@ -24,16 +18,18 @@ public class Produto extends AbstractEntity {
     private String nome;
 
     @Getter @Setter
-    @ManyToOne
+    @JoinColumn(name= "idCategoria")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Categoria categoria;
 
     @Getter @Setter
-    @ManyToOne
+    @JoinColumn(name= "idFornecedor")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Fornecedor fornecedor;
 
     @Getter @Setter
-    @Column(name = "codigo_de_barras", nullable = false, unique = true, length = 13)
-    private Long codigoDeBarras;
+    @Column(name = "codigo_de_barras", nullable = false, length = 13)
+    private String codigoDeBarras;
 
     @Getter @Setter
     @Column(name = "valor_custo", nullable = false, precision = 10, scale = 2)
@@ -44,7 +40,16 @@ public class Produto extends AbstractEntity {
     private BigDecimal valorVenda;
 
     @Getter @Setter
-    @Column(name = "disponivel", nullable = false, columnDefinition = "bool default true")
-    private Boolean disponivel;
+    @Column(name = "quantidade")
+    private Integer quantidade;
 
+    public Produto(String nome, Categoria categoria, Fornecedor fornecedor, String codigoDeBarras, BigDecimal valorCusto, BigDecimal valorVenda, Integer quantidade) {
+        this.nome = nome;
+        this.categoria = categoria;
+        this.fornecedor = fornecedor;
+        this.codigoDeBarras = codigoDeBarras;
+        this.valorCusto = valorCusto;
+        this.valorVenda = valorVenda;
+        this.quantidade = quantidade;
+    }
 }

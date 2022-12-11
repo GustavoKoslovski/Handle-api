@@ -4,12 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.envers.Audited;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -19,31 +14,32 @@ import java.math.BigDecimal;
 public class VendaProduto extends AbstractEntity{
 
     @Getter @Setter
-    @ManyToOne
+    @JoinColumn(name= "idVenda")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Venda venda;
 
     @Getter @Setter
-    @ManyToOne
+    @JoinColumn(name= "idProduto")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Produto produto;
 
     @Getter @Setter
-    @Column(name = "quantidade", nullable = false)
+    @Column(name = "quantidade")
     private Integer quantidade;
 
     @Getter @Setter
-    @Column(name = "precoUnitario", nullable = false, precision = 10, scale = 2)
+    @Column(name = "preco_unitario", precision = 10, scale = 2)
     private BigDecimal precoUnitario;
 
     @Getter @Setter
-    @Column(name = "precoTotalBruto", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoTotalBruto;
+    @Column(name = "preco_final", precision = 10, scale = 2)
+    private BigDecimal precoFinal;
 
-    @Getter @Setter
-    @Column(name = "desconto", nullable = false, precision = 10, scale = 2)
-    private BigDecimal desconto;
-
-    @Getter @Setter
-    @Column(name = "precoComDesconto", nullable = false, precision = 10, scale = 2)
-    private BigDecimal precoComDesconto;
-
+    public VendaProduto(Venda venda, Produto produto, Integer quantidade, BigDecimal precoUnitario, BigDecimal precoFinal) {
+        this.venda = venda;
+        this.produto = produto;
+        this.quantidade = quantidade;
+        this.precoUnitario = precoUnitario;
+        this.precoFinal = precoFinal;
+    }
 }
