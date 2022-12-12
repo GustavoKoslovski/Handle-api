@@ -29,10 +29,9 @@ public class MovimentoEstoqueController {
     }
 
     @PostMapping
-    public ResponseEntity<?> insert(@RequestBody MovimentoEstoque movimentoEstoqueService) {
+    public ResponseEntity<?> insert(@RequestBody MovimentoEstoque movimentoEstoque) {
         try {
-            this.movimentoEstoqueService.insert(movimentoEstoqueService);
-            return ResponseEntity.ok().body("cadastrado com sucesso.");
+            return ResponseEntity.ok().body(this.movimentoEstoqueService.insert(movimentoEstoque));
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

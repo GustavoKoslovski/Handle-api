@@ -23,14 +23,14 @@ public class MovEstoqueProduto extends AbstractEntity{
     private MovimentoEstoque movimentoEstoque;
 
     @Getter @Setter
-    @Column(name = "quantidade", nullable = false)
+    @Column(name = "quantidade")
     private Integer quantidade;
 
     @Getter @Setter
-    @Column(name = "preco_unitario", nullable = false, precision = 10, scale = 2)
+    @Column(name = "preco_unitario", precision = 10, scale = 2)
     private BigDecimal precoUnitario;
 
     @Getter @Setter
-    @Column(name = "preco_final", nullable = false, precision = 10, scale = 2)
+    @Column(name = "preco_final", precision = 10, scale = 2)
     private BigDecimal precoFinal;
 }
