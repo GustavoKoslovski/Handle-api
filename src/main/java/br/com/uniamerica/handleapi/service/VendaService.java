@@ -27,16 +27,7 @@ public class VendaService {
 
     @Transactional
     public Venda insert(Venda venda){
-
-//        this.validarCadastro(venda);
         return this.vendaRepository.save(venda);
-
-//        if(venda.getId() != null){
-//            for(int i = 0; i < vendaProdutos.length; i++){
-//
-//                vendaProdutoService.insert(vendaProdutos[i], venda);
-//            }
-//        }
     }
 
     @Transactional
