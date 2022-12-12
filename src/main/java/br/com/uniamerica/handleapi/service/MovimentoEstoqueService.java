@@ -27,9 +27,8 @@ public class MovimentoEstoqueService {
     }
 
     @Transactional
-    public void insert(MovimentoEstoque movimentoEstoque){
-        this.validarCadastro(movimentoEstoque);
-        this.movimentoEstoqueRepository.save(movimentoEstoque);
+    public MovimentoEstoque insert(MovimentoEstoque movimentoEstoque){
+        return this.movimentoEstoqueRepository.save(movimentoEstoque);
     }
 
     @Transactional

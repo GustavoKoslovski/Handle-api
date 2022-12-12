@@ -21,7 +21,6 @@ public class Cliente extends AbstractEntity {
     private String nome;
 
     @Getter @Setter
-    @CPF
     @Column(name = "cpf", unique = true, length = 15)
     private String cpf;
 

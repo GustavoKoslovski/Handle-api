@@ -23,19 +23,15 @@ import java.util.List;
 public class MovimentoEstoque extends AbstractEntity {
 
     @Getter @Setter
-    @Column(name = "tipo_movimento", nullable = false)
+    @Column(name = "tipo_movimento")
     private Boolean tipoMovimento;
 
     @Getter @Setter
-    @Column(name = "data", nullable = false)
-    private LocalDateTime data;
-
-    @Getter @Setter
-    @Column(name = "valor", nullable = false)
+    @Column(name = "valor")
     private Double valor;
 
     @Getter @Setter
-    @Column(name = "quantidade_total", nullable = false)
+    @Column(name = "quantidade_total")
     private Integer quantidadeTotal;
 
 }

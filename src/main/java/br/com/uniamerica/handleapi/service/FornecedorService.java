@@ -51,7 +51,7 @@ public class FornecedorService {
     // Valida se o nome é nulo ou vazio. //
     public Boolean isNomeNotNull(Fornecedor fornecedor) {
         if (fornecedor.getNome() == null || fornecedor.getNome().isEmpty()) {
-            throw new RuntimeException("O nome não foi fornecido, favor insira um nome valido.");
+            throw new RuntimeException("O nome não foi fornecido, favor insira um nome válido.");
         } else {
             return true;
         }
@@ -64,7 +64,7 @@ public class FornecedorService {
             char chr = fornecedor.getNome().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O nome fornecido nao e valido, favor insira um nome sem caracter especial");
+                    throw new RuntimeException("O nome fornecido não é valido, favor insira um nome sem caracter especial.");
                 }
             }
         }
@@ -88,7 +88,7 @@ public class FornecedorService {
         if (fornecedor.getTelefone().length() == 11) {
             return true;
         } else {
-            throw new RuntimeException("Telefone é invalido");
+            throw new RuntimeException("Telefone é inválido.");
         }
     }
 
@@ -99,7 +99,7 @@ public class FornecedorService {
             char chr = fornecedor.getTelefone().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O telefone fornecido nao e valido, favor insira um telefone sem caracter especial.");
+                    throw new RuntimeException("O telefone fornecido não é válido, favor insira um telefone sem caracter especial.");
                 }
             }
         }
@@ -117,7 +117,7 @@ public class FornecedorService {
                     }
                 }
             }
-        throw new RuntimeException("O telefone contem letras.");
+        throw new RuntimeException("O telefone contém letras.");
     }
     //****//
 

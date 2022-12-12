@@ -24,7 +24,6 @@ public class ClienteService {
 
     @Transactional
     public void insert(Cliente cliente){
-
         this.validarCadastro(cliente);
         this.clienteRepository.save(cliente);
     }
@@ -66,7 +65,7 @@ public class ClienteService {
             char chr = cliente.getNome().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O nome fornecido nao e valido, favor insira um nome sem caracter especial");
+                    throw new RuntimeException("O nome fornecido não é valido, favor insira um nome sem caracter especial.");
                 }
             }
         }
@@ -89,7 +88,7 @@ public class ClienteService {
         if (cliente.getCpf().length() == 11) {
             return true;
         } else {
-            throw new RuntimeException("CPF é invalido");
+            throw new RuntimeException("CPF é inválido.");
         }
     }
 
@@ -100,7 +99,7 @@ public class ClienteService {
             char chr = cliente.getCpf().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O CPF fornecido nao e valido, favor insira apenas números");
+                    throw new RuntimeException("O CPF fornecido não é válido, favor insira apenas números");
                 }
             }
         }
@@ -111,8 +110,8 @@ public class ClienteService {
 
     //Valida se Telefone do cliente nao e null ou empty
     public Boolean isTelefoneNotNull(Cliente cliente) {
-        if (cliente.getTelefone() == null || cliente.getTelefone().isEmpty()) {
-            throw new RuntimeException("O telefone não foi fornecido, favor insira um nome valido.");
+        if (cliente.getTelefone() == null) {
+            throw new RuntimeException("O telefone não foi fornecido, favor insira um nome válido.");
         } else {
             return true;
         }
@@ -123,7 +122,7 @@ public class ClienteService {
         if (cliente.getTelefone().length() == 11) {
             return true;
         } else {
-            throw new RuntimeException("Telefone é invalido");
+            throw new RuntimeException("Telefone é invalido.");
         }
     }
 
@@ -134,13 +133,19 @@ public class ClienteService {
             char chr = cliente.getTelefone().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O CPF fornecido nao e valido, favor insira um CPF sem caracter especial");
+                    throw new RuntimeException("O CPF fornecido não é valido, favor insira um CPF sem caracter especial.");
                 }
             }
         }
         return true;
     }
 
+    public boolean camposCadastroNull(Cliente cliente){
+        if(cliente.getNome()== null || cliente.getTelefone() == null
+            || cliente.getCpf() == null)
+        { return true;
+        }else  throw new RuntimeException("Não pode ser cadastrado com algum campo em branco.");
+    }
     public boolean validarCadastro(Cliente cliente){
         if(this.isNomeNotNull(cliente) == true &&
                 this.isNomeCaracter(cliente) == true &&
