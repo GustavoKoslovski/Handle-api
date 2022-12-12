@@ -26,10 +26,10 @@ public class VendaService {
     }
 
     @Transactional
-    public void insert(Venda venda){
+    public Venda insert(Venda venda){
 
 //        this.validarCadastro(venda);
-        this.vendaRepository.save(venda);
+        return this.vendaRepository.save(venda);
 
 //        if(venda.getId() != null){
 //            for(int i = 0; i < vendaProdutos.length; i++){

@@ -30,9 +30,7 @@ public class VendaController {
     @PostMapping
     public ResponseEntity<?> insert(@RequestBody Venda venda) {
         try {
-            this.vendaService.insert(venda);
-
-            return ResponseEntity.ok().body("Venda cadastrada com sucesso.");
+            return ResponseEntity.ok().body(this.vendaService.insert(venda));
         }catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
