@@ -24,7 +24,6 @@ public class Funcionario extends AbstractEntity {
     private String rg;
 
     @Getter @Setter
-    @CPF(message = "cpf nao e valido")
     @Column(name = "cpf", unique = true, nullable = false, length = 15)
     private String cpf;
 

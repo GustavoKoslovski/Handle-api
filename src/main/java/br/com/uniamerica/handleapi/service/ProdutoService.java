@@ -51,7 +51,7 @@ public class ProdutoService {
     //Valida se Nome do produto nao e null ou empty
     public Boolean isNomeNotNull(Produto produto) {
         if (produto.getNome() == null || produto.getNome().isEmpty()) {
-            throw new RuntimeException("O nome não foi fornecido, favor insira um nome valido.");
+            throw new RuntimeException("O nome não foi fornecido, favor insira um nome válido.");
         } else {
             return true;
         }
@@ -64,7 +64,7 @@ public class ProdutoService {
             char chr = produto.getNome().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O nome fornecido nao e valido, favor insira um nome sem caracter especial");
+                    throw new RuntimeException("O nome fornecido não é valido, favor insira um nome sem caracter especial.");
                 }
             }
         }
@@ -76,7 +76,7 @@ public class ProdutoService {
     //Validacao NotNull Categoria
     public Boolean isCategoriaNotNull(Produto produto) {
         if (produto.getCategoria() == null) {
-            throw new RuntimeException("A categoria nao foi fornecida.");
+            throw new RuntimeException("A categoria não foi fornecida.");
         } else {
             return true;
         }
@@ -88,7 +88,7 @@ public class ProdutoService {
         if(produto.getCodigoDeBarras() != null){
             return true;
         } else {
-            throw new RuntimeException("O Codigo de barra não foi fornecida.");
+            throw new RuntimeException("O Codigo de barras não foi fornecido.");
         }
     }
 
@@ -97,7 +97,7 @@ public class ProdutoService {
         if (produto.getCodigoDeBarras().length() != 13) {
             return true;
         } else {
-            throw new RuntimeException("Código de Barras é invalido");
+            throw new RuntimeException("Código de barras é invalido.");
         }
     }
 
@@ -108,7 +108,7 @@ public class ProdutoService {
             char chr = produto.getCodigoDeBarras().charAt(i);
             for (int j = 0; j < charSearch.length; j++){
                 if (charSearch[j] == chr){
-                    throw new RuntimeException("O numero de categoria fornecido nao é valido, favor insira um codigo de barras sem caracter especial");
+                    throw new RuntimeException("O numero do código de barras fornecido não é valido, favor insira um codigo de barras sem caracter especial.");
                 }
             }
         }
@@ -120,7 +120,7 @@ public class ProdutoService {
         if(produto.getFornecedor() != null){
             return true;
         } else {
-            throw new RuntimeException("O Fornecedor não foi fornecida.");
+            throw new RuntimeException("O Fornecedor não foi fornecido.");
         }
     }
 
@@ -130,7 +130,7 @@ public class ProdutoService {
             char chr = produto.getFornecedor().getId().toString().charAt(i);
             for (int j = 0; j < charSearch.length; j++){
                 if (charSearch[j] == chr){
-                    throw new RuntimeException("Favor insira um fornecedor sem caracter especial");
+                    throw new RuntimeException("Favor insira um fornecedor sem caracter especial.");
                 }
             }
         }

@@ -66,7 +66,7 @@ public class FuncionarioService {
             char chr = funcionario.getNome().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O nome fornecido nao e valido, favor insira um nome sem caracter especial");
+                    throw new RuntimeException("O nome fornecido não é válido, favor insira um nome sem caracter especial.");
                 }
             }
         }
@@ -89,7 +89,7 @@ public class FuncionarioService {
         if (funcionario.getTelefone().length() == 11) {
             return true;
         } else {
-            throw new RuntimeException("Telefone é invalido");
+            throw new RuntimeException("Telefone é invalido.");
         }
     }
 
@@ -100,7 +100,7 @@ public class FuncionarioService {
             char chr = funcionario.getTelefone().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O telefone fornecido nao e valido, favor insira um telefone sem caracter especial.");
+                    throw new RuntimeException("O telefone fornecido não é válido, favor insira um telefone sem caracter especial.");
                 }
             }
         }
@@ -127,7 +127,7 @@ public class FuncionarioService {
 
     public Boolean isSalarioNotNull(Funcionario funcionario) {
         if (funcionario.getTelefone() != null || funcionario.getTelefone().isEmpty()) {
-            throw new RuntimeException("Salario e invalido");
+            throw new RuntimeException("Salario é invalido.");
         } else {
             return true;
         }
@@ -140,7 +140,7 @@ public class FuncionarioService {
             char chr = funcionario.getTelefone().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O salario fornecido nao e valido, favor insira um salario sem caracter especial.");
+                    throw new RuntimeException("O salario fornecido não é válido, favor insira um salario sem caracter especial.");
                 }
             }
         }
@@ -152,7 +152,7 @@ public class FuncionarioService {
         if(funcionario.getSalario() > 0){
             return true;
         }else {
-            throw new RuntimeException("O salario nao pode ser negativo.");
+            throw new RuntimeException("O salário não pode ser negativo.");
         }
     }
 
@@ -161,7 +161,7 @@ public class FuncionarioService {
     //Valida CPF not null e nao e empty
     public Boolean isCpfNotNull(Funcionario funcionario) {
         if (funcionario.getCpf() == null || funcionario.getCpf().isEmpty()) {
-            throw new RuntimeException("O CPF não foi fornecido, favor insira um CPF valido.");
+            throw new RuntimeException("O CPF não foi fornecido, favor insira um CPF válido.");
         } else {
             return true;
         }
@@ -170,7 +170,7 @@ public class FuncionarioService {
     //Valida se CPF tem menos de 11 caracter
     public Boolean isCpfMenor(Funcionario funcionario) {
         if (funcionario.getCpf().length() < 11) {
-            throw new RuntimeException("O cpf informado nao contem 11 digitos");
+            throw new RuntimeException("O cpf informado nao contem 11 digitos.");
         } else {
             return true;
         }
@@ -183,7 +183,7 @@ public class FuncionarioService {
             char chr = funcionario.getCpf().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O CPF fornecido nao e valido, favor insira um CPF sem caracter especial");
+                    throw new RuntimeException("O CPF fornecido nao e válido, favor insira um CPF sem caracter especial.");
                 }
             }
         }
@@ -206,7 +206,7 @@ public class FuncionarioService {
         if(funcionario.getDataAdmissao().isBefore(datafutura)){
             return true;
         }else
-            {throw new RuntimeException("A data informada é maior que o permitido");}
+            {throw new RuntimeException("A data informada é maior que o permitido.");}
     }
 
     //Valida se a data informada é final de semana//

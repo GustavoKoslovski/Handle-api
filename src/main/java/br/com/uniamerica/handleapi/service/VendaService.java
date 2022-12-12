@@ -74,7 +74,7 @@ public class VendaService {
             char chr = venda.getCliente().getNome().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O nome do cliente fornecido nao e valido, favor insira um nome sem caracter especial");
+                    throw new RuntimeException("O nome do cliente fornecido não é válido, favor insira um nome sem caracter especial.");
                 }
             }
         }
@@ -89,7 +89,7 @@ public class VendaService {
         if (venda.getValorRecebido().compareTo(BigDecimal.valueOf(0.0)) != -1) {
             return true;
         } else {
-            throw new RuntimeException("O valor recebido e negativo, favor insira um valor valido.");
+            throw new RuntimeException("O valor recebido é negativo, favor insira um valor válido.");
         }
     }
 
@@ -99,7 +99,7 @@ public class VendaService {
             char chr = venda.getValorRecebido().toString().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O valor recebido da venda nao e valido, favor insira um valor sem caracter especial.");
+                    throw new RuntimeException("O valor recebido da venda não é válido, favor insira um valor sem caracter especial.");
                 }
             }
         }
@@ -110,7 +110,7 @@ public class VendaService {
         if (venda.getValorRecebido() != null) {
             return true;
         } else {
-            throw new RuntimeException("O valor recebido da venda não foi fornecido, favor insira um valor valido.");
+            throw new RuntimeException("O valor recebido da venda não foi fornecido, favor insira um valor válido.");
         }
     }
 
@@ -118,7 +118,7 @@ public class VendaService {
         if (venda.getValorRecebido().compareTo(venda.getValorTotal()) != -1) {
             return true;
         } else {
-            throw new RuntimeException("O valor recebido é menor que o total, favor insira um valor valido.");
+            throw new RuntimeException("O valor recebido é menor que o total, favor insira um valor válido.");
         }
     }
 
@@ -126,7 +126,7 @@ public class VendaService {
         if (venda.getValorTotal().compareTo(BigDecimal.valueOf(0.0)) != -1) {
             return true;
         } else {
-            throw new RuntimeException("O valor total e negativo, favor insira um valor valido.");
+            throw new RuntimeException("O valor total é negativo, favor insira um valor válido.");
         }
     }
 
@@ -136,7 +136,7 @@ public class VendaService {
             char chr = venda.getValorTotal().toString().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O valor total da venda nao e valido, favor insira um valor sem caracter especial.");
+                    throw new RuntimeException("O valor total da venda não é valido, favor insira um valor sem caracter especial.");
                 }
             }
         }
@@ -173,19 +173,11 @@ public class VendaService {
             char chr = venda.getValorDesconto().toString().charAt(i);
             for (int j = 0; j < charSearch.length; j++) {
                 if (charSearch[j] == chr) {
-                    throw new RuntimeException("O valor de desconto da venda nao e valido, favor insira um valor sem caracter especial.");
+                    throw new RuntimeException("O valor de desconto da venda não é válido, favor insira um valor sem caracter especial.");
                 }
             }
         }
         return true;
-    }
-
-    public Boolean isDescontoNotNull(Venda venda){
-        if (venda.getValorDesconto() != null) {
-            return true;
-        } else {
-            throw new RuntimeException("O valor de desconto da venda não foi fornecido, favor insira um valor valido.");
-        }
     }
 
     public void setValorTotal(Venda venda, VendaProduto vendaProduto[]){
